@@ -1,0 +1,12 @@
+
+# Obj
+SunkueApplication/x64/
+SunkueApplication/x86/
+
+# Visual Studio cache/options directory
+.vs/
+
+*.pdb
+*.zip
+*.exe
+
