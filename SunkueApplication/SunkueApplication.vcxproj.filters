@@ -1,17 +1,164 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Helper">
+      <UniqueIdentifier>{9204c865-58ad-4665-bc3f-66f12e496550}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Helper\Dependency">
+      <UniqueIdentifier>{7772c5ee-0520-41fc-b90a-06e835eec28c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Main">
+      <UniqueIdentifier>{80663648-cb9e-40e7-8cd5-0fbf91ae49b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ModuleFile">
+      <UniqueIdentifier>{044a780c-c3d4-4f8f-aac6-366d67427db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper\Dependency\imgui">
+      <UniqueIdentifier>{88b3def3-e2d5-4e85-9297-0fb60ba7e77d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{49610037-1a93-49fa-858a-b745f5f4beef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Interaction">
+      <UniqueIdentifier>{f379062e-73ab-421d-a4f3-744f9f5d86b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Renderer">
+      <UniqueIdentifier>{bbbf1531-235f-48cf-839d-527b59dca133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{2ee630e0-11cf-49ed-96d4-887567b1115f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{b3eb660c-84b3-44a8-a498-c65e3b640d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader\glsl">
+      <UniqueIdentifier>{54291cfa-daca-4563-a727-850fe7352bb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Interaction\Keyboard">
+      <UniqueIdentifier>{a6e6edf1-14b6-467c-b640-51e0261f35dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Interaction\Mouse">
+      <UniqueIdentifier>{d8d70c21-e2c7-4659-a058-9aec337dc37f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Interaction\WindowEvent">
+      <UniqueIdentifier>{a15aca65-2bd5-4d6e-909a-bd7ad62e0e68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ModuleFile\SubModule">
+      <UniqueIdentifier>{d575d748-524c-47a8-856d-db46f17115a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Interaction\Interaction">
+      <UniqueIdentifier>{db0a0d2f-d062-4df1-9634-238991923a37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Window">
+      <UniqueIdentifier>{c272e0f8-0f99-4f2c-8968-d230604eab62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\GuiManager">
+      <UniqueIdentifier>{113d99e2-1cec-428c-b285-01f3c69f5942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helper\Dependency\glad">
+      <UniqueIdentifier>{351472f6-9834-47ab-8fe6-27ccc15048ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Module\src\Std.h">
+      <Filter>Helper\Dependency</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\KeyboardEvent.h">
+      <Filter>Window\Interaction\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\MouseEvent.h">
+      <Filter>Window\Interaction\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Shader.h">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Shader.hpp">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\AppDependency.h">
+      <Filter>Helper\Dependency</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Actor.h">
+      <Filter>Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Interaction.h">
+      <Filter>Window\Interaction\Interaction</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\SunkueWindow.h">
+      <Filter>Window\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Renderer.h">
+      <Filter>Window\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\GuiManager.h">
+      <Filter>Window\GuiManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\imgui.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\imgui_draw.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\imgui_impl_glfw.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\imgui_tables.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\imgui_widgets.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\KeyboardEvent.cpp">
+      <Filter>Window\Interaction\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\MouseEvent.cpp">
+      <Filter>Window\Interaction\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\Shader.cpp">
+      <Filter>Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\Actor.cpp">
+      <Filter>Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\Interaction.cpp">
+      <Filter>Window\Interaction\Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\SunkueWindow.cpp">
+      <Filter>Window\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\Renderer.cpp">
+      <Filter>Window\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\GuiManager.cpp">
+      <Filter>Window\GuiManager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Module\Application">
+      <Filter>ModuleFile</Filter>
+    </None>
+    <None Include="Module\Base">
+      <Filter>ModuleFile\SubModule</Filter>
+    </None>
+    <None Include="Module\Interaction">
+      <Filter>ModuleFile\SubModule</Filter>
+    </None>
+    <None Include="Module\Renderer">
+      <Filter>ModuleFile\SubModule</Filter>
+    </None>
+    <None Include="Module\Window">
+      <Filter>ModuleFile\SubModule</Filter>
+    </None>
+    <None Include="Module\Gui">
+      <Filter>ModuleFile\SubModule</Filter>
+    </None>
   </ItemGroup>
 </Project>
