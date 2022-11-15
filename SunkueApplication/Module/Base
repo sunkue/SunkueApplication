@@ -4,3 +4,5 @@
 #include "src/Std.h"
 
 #include "src/AppDependency.h"
+#include "src/SunkueMath.hpp"
+

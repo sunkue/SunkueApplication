@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClInclude Include="Module\src\Actor.h" />
     <ClInclude Include="Module\src\AppDependency.h" />
+    <ClInclude Include="Module\src\Camera.hpp" />
+    <ClInclude Include="Module\src\ClippedWindow.hpp" />
     <ClInclude Include="Module\src\GuiManager.h" />
     <ClInclude Include="Module\src\Interaction.h" />
     <ClInclude Include="Module\src\KeyboardEvent.h" />
@@ -29,7 +31,10 @@
     <ClInclude Include="Module\src\Shader.h" />
     <ClInclude Include="Module\src\Shader.hpp" />
     <ClInclude Include="Module\src\Std.h" />
+    <ClInclude Include="Module\src\SunkueMath.hpp" />
     <ClInclude Include="Module\src\SunkueWindow.h" />
+    <ClInclude Include="Module\src\Transform.hpp" />
+    <ClInclude Include="Module\src\UniformBlockObject.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -76,6 +81,8 @@
     <None Include="Module\Gui" />
     <None Include="Module\Interaction" />
     <None Include="Module\Renderer" />
+    <None Include="Module\src\shader\default.frag" />
+    <None Include="Module\src\shader\default.vert" />
     <None Include="Module\Window" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -1,20 +1,11 @@
 == 환경 ==
 x64 release
 C++	14
-Eigen	3.4.0
-VTK	9.1.0
-CGAL	5.5.1
-Open3D	0.13.0
-
-tbb	12
 
 == 구성 ==
-Model	Pcd, Mesh 데이터 를 가진 객체.
-Kernel	Egien, Vtk, Cgal, Open3D 연동.
-Process	모델 전,후처리 & 표면화.
-::Analyze 모델 pcd 분석툴. 팩터 계산, 시각화 및 익스포트.
-IO	모델 임포트/익스포트.
-Visualizer	모델 시각화.
+Actor
+Interaction
+Gui
 
 == 사용법 ==
 <세팅>
@@ -23,10 +14,8 @@ src/include 포함경로 설정
 src/lib	  라이브러리경로 설정
 src/bin	  dll 파일들을 실행파일출력 폴더로
 <API>
-#include "Module/ModelModuleAnalyzer"
-#include "Module/ModelModuleCore"
-namespace 를 활용하여 비쥬얼스튜디오 등 IDE에서 쉽게 사용 할 수 있습니다.
-"In3D::" 를 입력하여 시작, IDE의 자동완성 기능을 쫒아 사용해 주세요.
+
+
 
 
 

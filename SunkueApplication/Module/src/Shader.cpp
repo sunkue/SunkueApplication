@@ -1,4 +1,38 @@
 #include "Shader.h"
+#include "UniformBlockObject.hpp"
+
+Shader::UniformBlockObjectMap Shader::UboMap;
+
+Shader& Shader::Basic()
+{
+	bool inited = false; 
+	std::vector<std::string> VS;
+	std::vector<std::string> FS;
+	std::vector<std::string> GS;
+	if(!inited){
+		VS.clear(); VS.emplace_back(ShaderDir() + "/default.vert");
+		FS.clear(); FS.emplace_back(ShaderDir() + "/default.frag");
+		GS.clear();
+	}
+	static Shader Basic(VS, FS, GS);
+	if (!inited) {
+		Basic.BindUbo<Eigen::Matrix4d>("VP_MAT");
+		inited = true;
+	}
+	return Basic;
+}
+
+template<class T>
+void Shader::BindUbo(const std::string& name){
+	if (0 == UboMap.count(name)) {
+		UboMap.emplace(name, *(new UBO<T>()));
+	}
+	UboMap.at(name).get().Bind(*this, name);
+}
+
+void Shader::SetUbo(const std::string& name, void* data){
+	UboMap.at(name).get().Set(data);
+}
 
 Shader::Shader(const std::vector<std::string>& filenameVS, const std::vector<std::string>& filenameFS, const std::vector<std::string>& filenameGS)
 	: shaderId{ compileShader(filenameVS, filenameFS, filenameGS) } {}

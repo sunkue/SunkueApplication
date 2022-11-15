@@ -58,6 +58,18 @@
     <Filter Include="Helper\Dependency\glad">
       <UniqueIdentifier>{351472f6-9834-47ab-8fe6-27ccc15048ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Componnent">
+      <UniqueIdentifier>{0d608655-5eda-4b1b-a94d-69f9cd0d6393}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Componnent\Transform">
+      <UniqueIdentifier>{08448a0a-eb35-4492-b2b0-f16bfea3d8a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Renderer\Cameara">
+      <UniqueIdentifier>{10c27a61-b350-4fc6-b431-7b079ddfa1c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Renderer\ClippedWindow">
+      <UniqueIdentifier>{23cf7b0e-6e8b-47dc-a77f-df47a527958f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module\src\Std.h">
@@ -92,6 +104,21 @@
     </ClInclude>
     <ClInclude Include="Module\src\GuiManager.h">
       <Filter>Window\GuiManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\UniformBlockObject.hpp">
+      <Filter>Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Transform.hpp">
+      <Filter>Componnent\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\SunkueMath.hpp">
+      <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Camera.hpp">
+      <Filter>Window\Renderer\Cameara</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\ClippedWindow.hpp">
+      <Filter>Window\Renderer\ClippedWindow</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +186,12 @@
     </None>
     <None Include="Module\Gui">
       <Filter>ModuleFile\SubModule</Filter>
+    </None>
+    <None Include="Module\src\shader\default.frag">
+      <Filter>Shader\glsl</Filter>
+    </None>
+    <None Include="Module\src\shader\default.vert">
+      <Filter>Shader\glsl</Filter>
     </None>
   </ItemGroup>
 </Project>

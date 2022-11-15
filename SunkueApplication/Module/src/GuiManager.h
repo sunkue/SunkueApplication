@@ -4,9 +4,10 @@
 
 class GuiObject {
 public:
+	virtual ~GuiObject() { DisableGui(); }
 	virtual void DrawGui() {};
-	virtual void Register() {};
-	virtual void UnRegister() {}; // On destroy
+	virtual void EnableGui() {};
+	virtual void DisableGui() {};
 };
 
 class GuiManager
@@ -40,7 +41,7 @@ public:
 		for (auto& o : GuiObjects) o.get().DrawGui();
 		
 		{
-			ImGui::Begin("PlayerInfo", 0, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoTitleBar);
+			ImGui::Begin("PlayerInfo", 0);
 			static float x;
 			ImGui::DragFloat("x", &x, 0.1, 0, 100, "%3f", 1);
 			ImGui::End();
