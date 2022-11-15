@@ -1,13 +1,18 @@
 #pragma once
 
 #include "../Base"
+#include "ClippedWindow.hpp"
 
 class GuiObject {
 public:
-	virtual ~GuiObject() { DisableGui(); }
+	ClippedWindow area;
+	SunkueMakeVar(bool, enable) = false;
+	SunkueMakeGet(bool, enable);
+public:
+	~GuiObject() { DisableGui(); }
 	virtual void DrawGui() {};
-	virtual void EnableGui() {};
-	virtual void DisableGui() {};
+	void EnableGui() { _enable = true; };
+	void DisableGui() { _enable = false; };
 };
 
 class GuiManager
@@ -28,25 +33,23 @@ public:
 		ImGui::DestroyContext();
 	}
 private:
+	using GuiObjectList = std::list<std::reference_wrapper<GuiObject>>;
+	GuiObjectList guiObjects;
 	GLFWwindow* window;
 public:
-	using GuiObjectList = std::list<std::reference_wrapper<GuiObject>>;
-	GuiObjectList GuiObjects;
-
+	void Regist(GuiObject& obj) {
+		guiObjects.push_back({ obj });
+	};
+	void UnRegist(const GuiObject& obj) {
+		guiObjects.remove_if([&](const auto& a) { return &a.get() == &obj; });
+	};
 	void RenderGui() {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		for (auto& o : GuiObjects) o.get().DrawGui();
+		for (auto& o : guiObjects) o.get().DrawGui();
 		
-		{
-			ImGui::Begin("PlayerInfo", 0);
-			static float x;
-			ImGui::DragFloat("x", &x, 0.1, 0, 100, "%3f", 1);
-			ImGui::End();
-		}
-
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}

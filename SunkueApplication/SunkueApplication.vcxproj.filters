@@ -120,6 +120,9 @@
     <ClInclude Include="Module\src\ClippedWindow.hpp">
       <Filter>Window\Renderer\ClippedWindow</Filter>
     </ClInclude>
+    <ClInclude Include="Module\src\SunkueDefine.h">
+      <Filter>Helper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

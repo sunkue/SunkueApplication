@@ -4,14 +4,10 @@ int main()
 {
 	Shader::ShaderDir() = "Module/src/shader";
 	SunkueWindow win;
-	Actor a;
+	TestActor a; a.Init();
 	a.EnableGui();
-	win.getGuiMng;
-	win.getRenderer;
-	win.getInteraction;
+	win.gui()->Regist(a);
+	win.renderer()->Regist(a);
 	win.run();
-	std::cout << "!";
-#define SunkueMakeSet(type, name, defaultValue); //_name
-#define SunkueMakeGet(type, name, defaultValue);
-#define SunkueMakeGetSet(type, name, defaultValue);
+	std::cout << "end";
 }

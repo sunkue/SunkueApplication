@@ -15,9 +15,9 @@ public:
 public:
 	void run();
 private:
-	std::unique_ptr<Renderer> renderer;
-	std::unique_ptr<Interaction> interactor;
-	std::unique_ptr<GuiManager> gui;
+	SunkueMakeGetSet(std::unique_ptr<Renderer>, renderer);
+	SunkueMakeGetSet(std::unique_ptr<Interaction>, interactor);
+	SunkueMakeGetSet(std::unique_ptr<GuiManager>, gui);
 private:
 	void Init();
 	void Destroy();

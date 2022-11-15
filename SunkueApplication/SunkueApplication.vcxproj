@@ -31,6 +31,7 @@
     <ClInclude Include="Module\src\Shader.h" />
     <ClInclude Include="Module\src\Shader.hpp" />
     <ClInclude Include="Module\src\Std.h" />
+    <ClInclude Include="Module\src\SunkueDefine.h" />
     <ClInclude Include="Module\src\SunkueMath.hpp" />
     <ClInclude Include="Module\src\SunkueWindow.h" />
     <ClInclude Include="Module\src\Transform.hpp" />

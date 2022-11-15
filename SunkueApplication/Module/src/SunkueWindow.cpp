@@ -29,17 +29,17 @@ void SunkueWindow::Init() {
 	glewExperimental = GL_TRUE;
 	glewInit();
 
-	renderer = std::make_unique<Renderer>(window);
-	gui = std::make_unique<GuiManager>(window);
-	interactor = std::make_unique<Interaction>(window);
-	interactor->BindEventFuncs();
+	renderer() = std::make_unique<Renderer>(window);
+	gui() = std::make_unique<GuiManager>(window);
+	interactor() = std::make_unique<Interaction>(window);
+	interactor()->BindEventFuncs();
 }
 
 void SunkueWindow::Destroy() {
 	if (!window) return;
-	gui.release();
-	renderer.release();
-	interactor.release();
+	gui().release();
+	renderer().release();
+	interactor().release();
 	glfwTerminate();
 	window = nullptr;
 }
@@ -47,9 +47,9 @@ void SunkueWindow::Destroy() {
 void SunkueWindow::DoNextFrame() {
 	std::this_thread::yield();
 
-	renderer->Render();
-	gui->RenderGui();
+	renderer()->Render();
+	gui()->RenderGui();
 	glfwSwapBuffers(window);
 
-	interactor->PollEvents();
+	interactor()->PollEvents();
 }

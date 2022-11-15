@@ -5,20 +5,29 @@
 #include "Shader.h"
 #include "GuiManager.h"
 
-
-
 class Actor : public TransformComponnent, public GuiObject
 {
-private:
+protected:
 	Shader& shader;
 	GLuint vao{};
 	size_t vertexSize{};
-	GLfloat pointSize{};
 	GLenum drawMode{ GL_POINTS };// GL_TRIANGLES
 public:
 	Actor() :shader{ Shader::Basic() } {}
+	virtual void Draw() {}
+	virtual void DrawGui() override {}
+	virtual void Init() {}
+};
 
-	virtual void Draw() {
+
+
+
+class TestActor : public Actor
+{
+private:
+	GLfloat pointSize{10};
+public:
+	virtual void Draw()override {
 		rotate(Eigen::Quaterniond(Eigen::AngleAxisd((0.01), Eigen::Vector3d(0, 1, 0).normalized())));
 		shader.Use();
 		shader.Set("u_model_mat", modelMatrix());
@@ -27,8 +36,14 @@ public:
 		glDrawArrays(drawMode, 0, vertexSize);
 		glPointSize(pointSize);
 	}
+
+	virtual void DrawGui()override {
+		ImGui::Begin("Actor A");
+		ImGui::DragFloat("pointSize", &pointSize, 0.1, 1, 100, "%.2f", 1);
+		ImGui::End();
+	}
 	
-	virtual void InitVao() {
+	virtual void Init()override {
 		glDeleteBuffers(1, &vao);
 		glGenVertexArrays(1, &vao);
 		GLuint vbo;
