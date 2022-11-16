@@ -12,6 +12,7 @@ int main()
 
 	TestActor a = MakeTestActor();
 	a.EnableGui();
+	a.AddUpdateFunc([&](float t) { a.rotate(Eigen::Quaternionf(Eigen::AngleAxisf((a.movingSpeed() * t), Eigen::Vector3f(0, 1, 0).normalized()))); });
 
 	win.renderer()->mainCamera().EnableGui();
 	win.renderer()->sun().EnableGui();

@@ -3,7 +3,7 @@
 #include "../Base"
 
 class TransformComponnent {
-public:
+protected:
 	Eigen::Translation3f t;
 	Eigen::Quaternionf r;
 	Eigen::AlignedScaling3f s;
@@ -20,7 +20,7 @@ public:
 		t = t * move;
 	}
 	void rotate(const Eigen::Quaternionf& move) {
-		r = r * move;
+		r *= move;
 	}
 	void scale(const float& move) {
 		s = s + Eigen::AlignedScaling3f(move, move, move);

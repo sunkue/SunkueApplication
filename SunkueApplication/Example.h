@@ -6,11 +6,9 @@ class TestActor : public Actor, public DrawAble, public GuiObject, public Transf
 {
 private:
 	GLfloat pointSize{ 0.25 };
-	float movingSpeed{ 5 };
+	SunkueMakeGetSet(float, movingSpeed) { 5 };
 public:
-	TestActor(Shader& shader) : DrawAble{ shader } {
-		AddUpdateFunc([&](double t) { rotate(Eigen::Quaternionf(Eigen::AngleAxisf((movingSpeed) * t, Eigen::Vector3f(0, 1, 0).normalized()))); });
-	}
+	TestActor(Shader& shader) : DrawAble{ shader } {}
 
 	virtual void Draw()override {
 		shader.Use();
@@ -25,7 +23,7 @@ public:
 		ImGui::Begin("Actor A");
 		ImGui::DragFloat("pointSize", &pointSize, 0.1, 0.1, 2, "%.3f", 1);
 		ImGui::DragFloat("shininess", &shininess, 0.1, 0, 200, "%.1f", 1);
-		ImGui::DragFloat("speed", &movingSpeed, 0.1, 0, 25, "%.1f", 1);
+		ImGui::DragFloat("speed", &_movingSpeed, 0.1, 0, 25, "%.1f", 1);
 		ImGui::End();
 	}
 };

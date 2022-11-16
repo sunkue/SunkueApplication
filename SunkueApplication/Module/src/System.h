@@ -23,7 +23,7 @@ public:
 	void Update() {
 		auto prev = timeStamp; timeStamp = clk::now();
 		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(timeStamp - prev);
-		double elapsedd = elapsed.count() / 1000.;
+		float elapsedd = static_cast<float>(elapsed.count()) / 1000.f;
 		for (auto& item : actorList()) {
 			item.get().Update(elapsedd);
 		}

@@ -9,7 +9,7 @@
 
 class Actor 
 {
-	using UpdateFunc = std::function<void(double)>;
+	using UpdateFunc = std::function<void(float)>;
 	using PriorityUpdateFunc = std::pair<size_t, UpdateFunc>;
 	struct PriorityUpdateFuncLess {
 		_NODISCARD constexpr bool operator()(const PriorityUpdateFunc& _Left, const PriorityUpdateFunc& _Right) const {
@@ -20,11 +20,11 @@ class Actor
 protected:
 	UpdateFuncs updateFuncs;
 public:
-	void Update(double elapsed) {
+	void Update(float elapsed) {
 		for (auto& f : updateFuncs) f.second(elapsed);
 	}
 	void AddUpdateFunc(UpdateFunc f, size_t priority = std::numeric_limits<size_t>::max()) {
-		updateFuncs.insert(std::move(std::make_pair(priority, f)));
+		updateFuncs.insert(std::make_pair(priority, f));
 	}
 };
 
