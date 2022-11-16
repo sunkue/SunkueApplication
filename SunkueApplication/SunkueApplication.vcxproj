@@ -19,13 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Example.h" />
     <ClInclude Include="Module\src\Actor.h" />
     <ClInclude Include="Module\src\AppDependency.h" />
     <ClInclude Include="Module\src\Camera.hpp" />
     <ClInclude Include="Module\src\ClippedWindow.hpp" />
+    <ClInclude Include="Module\src\DrawAble.h" />
     <ClInclude Include="Module\src\GuiManager.h" />
     <ClInclude Include="Module\src\Interaction.h" />
     <ClInclude Include="Module\src\KeyboardEvent.h" />
+    <ClInclude Include="Module\src\Light.hpp" />
     <ClInclude Include="Module\src\MouseEvent.h" />
     <ClInclude Include="Module\src\Renderer.h" />
     <ClInclude Include="Module\src\Shader.h" />
@@ -34,6 +37,7 @@
     <ClInclude Include="Module\src\SunkueDefine.h" />
     <ClInclude Include="Module\src\SunkueMath.hpp" />
     <ClInclude Include="Module\src\SunkueWindow.h" />
+    <ClInclude Include="Module\src\System.h" />
     <ClInclude Include="Module\src\Transform.hpp" />
     <ClInclude Include="Module\src\UniformBlockObject.hpp" />
   </ItemGroup>
@@ -42,6 +46,7 @@
     <ClCompile Include="Module\src\Actor.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Module\src\DrawAble.cpp" />
     <ClCompile Include="Module\src\GuiManager.cpp" />
     <ClCompile Include="Module\src\include\imgui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
@@ -75,6 +80,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Module\src\SunkueWindow.cpp" />
+    <ClCompile Include="Module\src\System.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Module\Application" />
@@ -82,8 +88,11 @@
     <None Include="Module\Gui" />
     <None Include="Module\Interaction" />
     <None Include="Module\Renderer" />
-    <None Include="Module\src\shader\default.frag" />
     <None Include="Module\src\shader\default.vert" />
+    <None Include="Module\src\shader\pcd.vert" />
+    <None Include="Module\src\shader\pcd_phong.frag" />
+    <None Include="Module\src\shader\pcd_unlit.frag" />
+    <None Include="Module\System" />
     <None Include="Module\Window" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

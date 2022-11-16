@@ -20,8 +20,10 @@ public:
 		static std::string ShaderDir;
 		return ShaderDir;
 	}
-	static Shader& Basic();
-
+public:
+	static Shader& PhongPcd();
+public:
+	Shader(const std::vector<std::string>& filenameVS, const std::vector<std::string>& filenameFS, const std::vector<std::string>& filenameGS);
 public:
 	void Use()const;
 	template<class T> void Set(const std::string& uniform_var_name, const T& value)const;
@@ -29,15 +31,11 @@ public:
 	GLuint GetShaderId()const { return shaderId; }
 public:
 	static UniformBlockObjectMap UboMap;
-	static void SetUbo(const std::string& name, void* data);
+	static void SetUbo(const std::string& name, const void* data);
 	template<class T> void BindUbo(const std::string& name);
-private:
-	Shader(const std::vector<std::string>& filenameVS, const std::vector<std::string>& filenameFS, const std::vector<std::string>& filenameGS);
-
 private:
 	void addShader(GLuint ShaderProgram, const char* pShaderText, GLenum shader_type);
 	GLuint compileShader(const std::vector<std::string>& filenameVS, const std::vector<std::string>& filenameFS, const std::vector<std::string>& filenameGS);
-	
 private:
 	GLuint shaderId;
 };

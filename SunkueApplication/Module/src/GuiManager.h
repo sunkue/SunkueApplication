@@ -6,13 +6,13 @@
 class GuiObject {
 public:
 	ClippedWindow area;
-	SunkueMakeVar(bool, enable) = false;
+	SunkueMakeVar(mutable bool, enable) = false;
 	SunkueMakeGet(bool, enable);
 public:
 	~GuiObject() { DisableGui(); }
 	virtual void DrawGui() {};
-	void EnableGui() { _enable = true; };
-	void DisableGui() { _enable = false; };
+	void EnableGui()const { _enable = true; };
+	void DisableGui()const { _enable = false; };
 };
 
 class GuiManager
@@ -48,7 +48,10 @@ public:
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		for (auto& o : guiObjects) o.get().DrawGui();
+		for (auto& o : guiObjects) {
+			if (!o.get().enable())continue;
+			o.get().DrawGui();
+		}
 		
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

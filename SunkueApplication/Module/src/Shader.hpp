@@ -39,9 +39,9 @@ TEMPLATE_SHADER_SET(Eigen::Matrix4f)
 	glUniformMatrix4fv(UNIFORM_LOCATION, 1, GL_FALSE, value.data());
 }
 
-TEMPLATE_SHADER_SET(Eigen::Affine3d)
+TEMPLATE_SHADER_SET(Eigen::Affine3f)
 {
-	glUniformMatrix4dv(UNIFORM_LOCATION, 1, GL_FALSE, value.data());
+	glUniformMatrix4fv(UNIFORM_LOCATION, 1, GL_FALSE, value.matrix().data());
 }
 
 #define SET_LIGHT_POWER()								\

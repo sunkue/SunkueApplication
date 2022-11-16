@@ -1,37 +1,41 @@
 #include "Shader.h"
 #include "UniformBlockObject.hpp"
+#include "Light.hpp"
 
 Shader::UniformBlockObjectMap Shader::UboMap;
 
-Shader& Shader::Basic()
-{
-	bool inited = false; 
-	std::vector<std::string> VS;
-	std::vector<std::string> FS;
-	std::vector<std::string> GS;
-	if(!inited){
-		VS.clear(); VS.emplace_back(ShaderDir() + "/default.vert");
-		FS.clear(); FS.emplace_back(ShaderDir() + "/default.frag");
-		GS.clear();
-	}
-	static Shader Basic(VS, FS, GS);
-	if (!inited) {
-		Basic.BindUbo<Eigen::Matrix4d>("VP_MAT");
-		inited = true;
-	}
-	return Basic;
-}
-
 template<class T>
-void Shader::BindUbo(const std::string& name){
+void Shader::BindUbo(const std::string& name) {
 	if (0 == UboMap.count(name)) {
 		UboMap.emplace(name, *(new UBO<T>()));
 	}
 	UboMap.at(name).get().Bind(*this, name);
 }
 
-void Shader::SetUbo(const std::string& name, void* data){
+void Shader::SetUbo(const std::string& name, const void* data) {
 	UboMap.at(name).get().Set(data);
+}
+
+Shader& Shader::PhongPcd()
+{
+	bool initonce = true;
+	std::vector<std::string> VS;
+	std::vector<std::string> FS;
+	std::vector<std::string> GS;
+	if (initonce) {
+		VS.emplace_back(Shader::ShaderDir() + "/pcd.vert");
+		FS.emplace_back(Shader::ShaderDir() + "/pcd_phong.frag");
+	}
+	static Shader shader(VS, FS, GS);
+	if (initonce) {
+		shader.BindUbo<Eigen::Matrix4f>("V_MAT");
+		shader.BindUbo<Eigen::Matrix4f>("P_MAT");
+		shader.BindUbo<Eigen::Array4i>("RESOLUTION");
+		shader.BindUbo<Eigen::Vector3f>("CAMERA");
+		shader.BindUbo<DirectionalLight>("LIGHT");
+	}
+	initonce = false;
+	return shader;
 }
 
 Shader::Shader(const std::vector<std::string>& filenameVS, const std::vector<std::string>& filenameFS, const std::vector<std::string>& filenameGS)
@@ -62,7 +66,7 @@ void Shader::addShader(GLuint shader_program, const char* raw_shader, GLenum sha
 		std::cerr << "Error creating shader type " << shader_type << "\n";
 	}
 	const GLchar* p[1] = { raw_shader };
-	GLint lengths[1] = {(GLint)strlen(raw_shader)};
+	GLint lengths[1] = { (GLint)strlen(raw_shader) };
 	glShaderSource(shaderObj, 1, p, lengths);
 	glCompileShader(shaderObj);
 	GLint success;

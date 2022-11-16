@@ -3,9 +3,11 @@ x64 release
 C++	14
 
 == 구성 ==
-Actor
+Renderer
 Interaction
 Gui
+System
+Window
 
 == 사용법 ==
 <세팅>
@@ -14,6 +16,10 @@ src/include 포함경로 설정
 src/lib	  라이브러리경로 설정
 src/bin	  dll 파일들을 실행파일출력 폴더로
 <API>
+Window / System / GuiObject / Actor / Shader / RenderAble 등등..
+상속 후 오버라이딩 및 수정해서 목적에 맞게 사용.
+Window Init 이후에 Shader 생성 (RenderAble 생성) 가능.
+
 
 
 

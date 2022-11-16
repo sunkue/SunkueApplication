@@ -6,3 +6,5 @@
 #include "src/AppDependency.h"
 #include "src/SunkueDefine.h"
 #include "src/SunkueMath.hpp"
+#undef max
+#undef min

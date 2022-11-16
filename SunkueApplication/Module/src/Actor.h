@@ -5,95 +5,26 @@
 #include "Shader.h"
 #include "GuiManager.h"
 
-class Actor : public TransformComponnent, public GuiObject
+
+
+class Actor 
 {
+	using UpdateFunc = std::function<void(double)>;
+	using PriorityUpdateFunc = std::pair<size_t, UpdateFunc>;
+	struct PriorityUpdateFuncLess {
+		_NODISCARD constexpr bool operator()(const PriorityUpdateFunc& _Left, const PriorityUpdateFunc& _Right) const {
+			return _Left.first < _Right.first;
+		}
+	};
+	using UpdateFuncs = std::set<PriorityUpdateFunc, PriorityUpdateFuncLess>;
 protected:
-	Shader& shader;
-	GLuint vao{};
-	size_t vertexSize{};
-	GLenum drawMode{ GL_POINTS };// GL_TRIANGLES
+	UpdateFuncs updateFuncs;
 public:
-	Actor() :shader{ Shader::Basic() } {}
-	virtual void Draw() {}
-	virtual void DrawGui() override {}
-	virtual void Init() {}
-};
-
-
-
-
-class TestActor : public Actor
-{
-private:
-	GLfloat pointSize{10};
-public:
-	virtual void Draw()override {
-		rotate(Eigen::Quaterniond(Eigen::AngleAxisd((0.01), Eigen::Vector3d(0, 1, 0).normalized())));
-		shader.Use();
-		shader.Set("u_model_mat", modelMatrix());
-		glBindVertexArray(vao);
-		// glDrawArrays(GL_TRIANGLES, 0, vertexSize);
-		glDrawArrays(drawMode, 0, vertexSize);
-		glPointSize(pointSize);
+	void Update(double elapsed) {
+		for (auto& f : updateFuncs) f.second(elapsed);
 	}
-
-	virtual void DrawGui()override {
-		ImGui::Begin("Actor A");
-		ImGui::DragFloat("pointSize", &pointSize, 0.1, 1, 100, "%.2f", 1);
-		ImGui::End();
-	}
-	
-	virtual void Init()override {
-		glDeleteBuffers(1, &vao);
-		glGenVertexArrays(1, &vao);
-		GLuint vbo;
-		glGenBuffers(1, &vbo);
-
-		std::vector<Eigen::Vector3f> points
-		{
-			{
-				Eigen::Vector3f{ 1.0, -1, -1},
-				Eigen::Vector3f{ 1, -1, 1 },
-				Eigen::Vector3f{ -1, -1, 1 },
-				Eigen::Vector3f{ -1, -1, -1 },
-				Eigen::Vector3f{ 1, 1, -1 },
-				Eigen::Vector3f{ 1, 1, 1 },
-				Eigen::Vector3f{ -1, 1, 1 },
-				Eigen::Vector3f{ -1, 1, -1 }
-			}
-		};
-		std::vector<Eigen::Vector3f> normals; normals.assign(points.size(), { 1,0,0 });
-		std::vector<Eigen::Vector3f> colors
-		{
-			{
-				Eigen::Vector3f{ 1, 0, 0},
-				Eigen::Vector3f{ 1, 0, 1 },
-				Eigen::Vector3f{ 0, 0, 1 },
-				Eigen::Vector3f{ 0, 0, 0 },
-				Eigen::Vector3f{ 1, 1, 0 },
-				Eigen::Vector3f{ 1, 1, 1 },
-				Eigen::Vector3f{ 0, 1, 1 },
-				Eigen::Vector3f{ 0, 1, 0 }
-			}
-		};
-		vertexSize = points.size();
-		const auto sizeofVec3 = sizeof(Eigen::Vector3f);
-		const auto pointsSize = points.size();
-		const auto attributeSize = pointsSize;
-		const auto bufferSize = attributeSize * sizeofVec3;
-		glBindVertexArray(vao);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glBufferData(GL_ARRAY_BUFFER, bufferSize * 3, nullptr, GL_STATIC_DRAW);
-		glBufferSubData(GL_ARRAY_BUFFER, 0, bufferSize, points.data());
-		glBufferSubData(GL_ARRAY_BUFFER, bufferSize, bufferSize, normals.data());
-		glBufferSubData(GL_ARRAY_BUFFER, bufferSize * 2, bufferSize, colors.data());
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeofVec3, 0);
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeofVec3, reinterpret_cast<GLvoid*>(bufferSize));
-		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeofVec3, reinterpret_cast<GLvoid*>(bufferSize * 2));
-		glBindVertexArray(0);
+	void AddUpdateFunc(UpdateFunc f, size_t priority = std::numeric_limits<size_t>::max()) {
+		updateFuncs.insert(std::move(std::make_pair(priority, f)));
 	}
 };
 

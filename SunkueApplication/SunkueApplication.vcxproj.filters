@@ -25,15 +25,6 @@
     <Filter Include="Window\Renderer">
       <UniqueIdentifier>{bbbf1531-235f-48cf-839d-527b59dca133}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Actor">
-      <UniqueIdentifier>{2ee630e0-11cf-49ed-96d4-887567b1115f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shader">
-      <UniqueIdentifier>{b3eb660c-84b3-44a8-a498-c65e3b640d88}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Shader\glsl">
-      <UniqueIdentifier>{54291cfa-daca-4563-a727-850fe7352bb6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Window\Interaction\Keyboard">
       <UniqueIdentifier>{a6e6edf1-14b6-467c-b640-51e0261f35dd}</UniqueIdentifier>
     </Filter>
@@ -70,6 +61,30 @@
     <Filter Include="Window\Renderer\ClippedWindow">
       <UniqueIdentifier>{23cf7b0e-6e8b-47dc-a77f-df47a527958f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Window\Renderer\Shader">
+      <UniqueIdentifier>{b3eb660c-84b3-44a8-a498-c65e3b640d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Renderer\Shader\glsl">
+      <UniqueIdentifier>{54291cfa-daca-4563-a727-850fe7352bb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Renderer\Renderer">
+      <UniqueIdentifier>{ffdcb2f8-82bc-4e23-a15c-2491bcbd26d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Renderer\Light">
+      <UniqueIdentifier>{e4573150-9041-4636-b343-d104bf52a7fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\System">
+      <UniqueIdentifier>{54427420-bb20-4be8-8739-d2ea22a75fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\System\Actor">
+      <UniqueIdentifier>{2ee630e0-11cf-49ed-96d4-887567b1115f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\System\System">
+      <UniqueIdentifier>{501e93cd-6db7-4402-a056-46e1e680121d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window\Renderer\DrawAble">
+      <UniqueIdentifier>{c1793962-8f80-41ad-a24a-0182e4ff68f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module\src\Std.h">
@@ -82,16 +97,16 @@
       <Filter>Window\Interaction\Mouse</Filter>
     </ClInclude>
     <ClInclude Include="Module\src\Shader.h">
-      <Filter>Shader</Filter>
+      <Filter>Window\Renderer\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Module\src\Shader.hpp">
-      <Filter>Shader</Filter>
+      <Filter>Window\Renderer\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Module\src\AppDependency.h">
       <Filter>Helper\Dependency</Filter>
     </ClInclude>
     <ClInclude Include="Module\src\Actor.h">
-      <Filter>Actor</Filter>
+      <Filter>Window\System\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Module\src\Interaction.h">
       <Filter>Window\Interaction\Interaction</Filter>
@@ -99,14 +114,11 @@
     <ClInclude Include="Module\src\SunkueWindow.h">
       <Filter>Window\Window</Filter>
     </ClInclude>
-    <ClInclude Include="Module\src\Renderer.h">
-      <Filter>Window\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="Module\src\GuiManager.h">
       <Filter>Window\GuiManager</Filter>
     </ClInclude>
     <ClInclude Include="Module\src\UniformBlockObject.hpp">
-      <Filter>Shader</Filter>
+      <Filter>Window\Renderer\Shader</Filter>
     </ClInclude>
     <ClInclude Include="Module\src\Transform.hpp">
       <Filter>Componnent\Transform</Filter>
@@ -122,6 +134,21 @@
     </ClInclude>
     <ClInclude Include="Module\src\SunkueDefine.h">
       <Filter>Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Renderer.h">
+      <Filter>Window\Renderer\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\Light.hpp">
+      <Filter>Window\Renderer\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\System.h">
+      <Filter>Window\System\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Module\src\DrawAble.h">
+      <Filter>Window\Renderer\DrawAble</Filter>
+    </ClInclude>
+    <ClInclude Include="Example.h">
+      <Filter>Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -153,10 +180,10 @@
       <Filter>Window\Interaction\Mouse</Filter>
     </ClCompile>
     <ClCompile Include="Module\src\Shader.cpp">
-      <Filter>Shader</Filter>
+      <Filter>Window\Renderer\Shader</Filter>
     </ClCompile>
     <ClCompile Include="Module\src\Actor.cpp">
-      <Filter>Actor</Filter>
+      <Filter>Window\System\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Module\src\Interaction.cpp">
       <Filter>Window\Interaction\Interaction</Filter>
@@ -164,11 +191,17 @@
     <ClCompile Include="Module\src\SunkueWindow.cpp">
       <Filter>Window\Window</Filter>
     </ClCompile>
-    <ClCompile Include="Module\src\Renderer.cpp">
-      <Filter>Window\Renderer</Filter>
-    </ClCompile>
     <ClCompile Include="Module\src\GuiManager.cpp">
       <Filter>Window\GuiManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\Renderer.cpp">
+      <Filter>Window\Renderer\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\System.cpp">
+      <Filter>Window\System\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\DrawAble.cpp">
+      <Filter>Window\Renderer\DrawAble</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,11 +223,20 @@
     <None Include="Module\Gui">
       <Filter>ModuleFile\SubModule</Filter>
     </None>
-    <None Include="Module\src\shader\default.frag">
-      <Filter>Shader\glsl</Filter>
-    </None>
     <None Include="Module\src\shader\default.vert">
-      <Filter>Shader\glsl</Filter>
+      <Filter>Window\Renderer\Shader\glsl</Filter>
+    </None>
+    <None Include="Module\src\shader\pcd_unlit.frag">
+      <Filter>Window\Renderer\Shader\glsl</Filter>
+    </None>
+    <None Include="Module\src\shader\pcd.vert">
+      <Filter>Window\Renderer\Shader\glsl</Filter>
+    </None>
+    <None Include="Module\src\shader\pcd_phong.frag">
+      <Filter>Window\Renderer\Shader\glsl</Filter>
+    </None>
+    <None Include="Module\System">
+      <Filter>ModuleFile\SubModule</Filter>
     </None>
   </ItemGroup>
 </Project>

@@ -27,7 +27,7 @@ Eigen::Matrix4<genType> perspective(genType fovY, genType aspect, genType n, gen
 {
 	genType theta = fovY * 0.5;
 	genType range = f - n;
-	genType invtan = 1. / tan(theta);
+	genType invtan = 1. / std::tan(theta);
 	Eigen::Matrix4<genType> projectionMatrix{};
 	projectionMatrix(0, 0) = invtan / aspect;
 	projectionMatrix(1, 1) = invtan;

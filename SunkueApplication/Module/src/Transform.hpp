@@ -4,9 +4,9 @@
 
 class TransformComponnent {
 public:
-	Eigen::Translation3d t;
-	Eigen::Quaterniond r;
-	Eigen::AlignedScaling3d s;
+	Eigen::Translation3f t;
+	Eigen::Quaternionf r;
+	Eigen::AlignedScaling3f s;
 public:
 	TransformComponnent() { reset(); }
 
@@ -16,19 +16,19 @@ public:
 		s.setIdentity();
 	}
 
-	void translate(const Eigen::Translation3d& move) {
+	void translate(const Eigen::Translation3f& move) {
 		t = t * move;
 	}
-	void rotate(const Eigen::Quaterniond& move) {
+	void rotate(const Eigen::Quaternionf& move) {
 		r = r * move;
 	}
-	void scale(const double& move) {
-		s = s + Eigen::AlignedScaling3d(move, move, move);
+	void scale(const float& move) {
+		s = s + Eigen::AlignedScaling3f(move, move, move);
 	}
-	void scale(const Eigen::AlignedScaling3d& move) {
+	void scale(const Eigen::AlignedScaling3f& move) {
 		s = s + move;
 	}
-	Eigen::Affine3d modelMatrix() {
+	Eigen::Affine3f modelMatrix() {
 		return t * r * s;
 	}
 };
