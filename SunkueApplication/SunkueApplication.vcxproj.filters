@@ -203,6 +203,15 @@
     <ClCompile Include="Module\src\DrawAble.cpp">
       <Filter>Window\Renderer\DrawAble</Filter>
     </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\implot.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\implot_demo.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\implot_items.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Module\Application">

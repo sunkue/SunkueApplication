@@ -28,6 +28,7 @@ class DrawAble
 {
 protected:
 	GLuint vao{};
+	GLuint vbo{};
 	size_t vertexNum{};
 	GLenum drawMode{ GL_POINTS };// GL_TRIANGLES
 	float shininess{ 64 };
@@ -38,4 +39,6 @@ public:
 	virtual void Draw() {};
 	template<class genType>
 	void Init(const std::vector<Eigen::Vector3<genType>>& points, const std::vector<Eigen::Vector3<genType>>& normals, const std::vector<Eigen::Vector3<genType>>& colors);
+	template<class genType>
+	void Init(const std::vector<Eigen::Vector3<genType>>& points, const std::vector<Eigen::Vector3<genType>>& normals, const std::vector<genType>& scalars);
 };

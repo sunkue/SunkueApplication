@@ -66,6 +66,9 @@
     <ClCompile Include="Module\src\include\imgui\imgui_widgets.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\implot.cpp" />
+    <ClCompile Include="Module\src\include\imgui\implot_demo.cpp" />
+    <ClCompile Include="Module\src\include\imgui\implot_items.cpp" />
     <ClCompile Include="Module\src\Interaction.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>

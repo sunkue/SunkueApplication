@@ -22,6 +22,7 @@ public:
 	}
 public:
 	static Shader& PhongPcd();
+	static Shader& PhongScalarPcd();
 public:
 	Shader(const std::vector<std::string>& filenameVS, const std::vector<std::string>& filenameFS, const std::vector<std::string>& filenameGS);
 public:

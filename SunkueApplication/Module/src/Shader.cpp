@@ -38,6 +38,29 @@ Shader& Shader::PhongPcd()
 	return shader;
 }
 
+Shader& Shader::PhongScalarPcd()
+{
+	bool initonce = true;
+	std::vector<std::string> VS;
+	std::vector<std::string> FS;
+	std::vector<std::string> GS;
+	if (initonce) {
+		VS.emplace_back(Shader::ShaderDir() + "/pcd_scalar.vert");
+		FS.emplace_back(Shader::ShaderDir() + "/pcd_phong.frag");
+	}
+	static Shader shader(VS, FS, GS);
+	if (initonce) {
+		shader.BindUbo<Eigen::Matrix4f>("V_MAT");
+		shader.BindUbo<Eigen::Matrix4f>("P_MAT");
+		shader.BindUbo<Eigen::Array4i>("RESOLUTION");
+		shader.BindUbo<Eigen::Vector3f>("CAMERA");
+		shader.BindUbo<DirectionalLight>("LIGHT");
+	}
+	initonce = false;
+	return shader;
+}
+
+
 Shader::Shader(const std::vector<std::string>& filenameVS, const std::vector<std::string>& filenameFS, const std::vector<std::string>& filenameGS)
 	: shaderId{ compileShader(filenameVS, filenameFS, filenameGS) } {}
 
