@@ -26,6 +26,7 @@ public:
 	void UnRegist(const DrawAble& item) {
 		drawAbleItems().remove_if([&](const auto& a) { return &a.get() == &item; });
 	};
+	void ResetCamera();
 private:
 	void Clear()
 	{

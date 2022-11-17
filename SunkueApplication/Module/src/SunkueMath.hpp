@@ -8,32 +8,36 @@ inline genType radians(genType degrees)
 }
 
 template <class genType>
-Eigen::Matrix4<genType> lookAt(const Eigen::Vector3<genType>& position, const Eigen::Vector3<genType>& target, const Eigen::Vector3<genType>& up)
+Eigen::Matrix4<genType> lookAt(const Eigen::Vector3<genType>& eye, const  Eigen::Vector3<genType>& center, const  Eigen::Vector3<genType>& up)
 {
+	Eigen::Vector3<genType> const f((center - eye).normalized());
+	Eigen::Vector3<genType> const s(f.cross(up).normalized());
+	Eigen::Vector3<genType> const u(s.cross(f));
 	Eigen::Matrix3<genType> R;
-	R.col(2) = (position - target).normalized();
-	R.col(0) = up.cross(R.col(2)).normalized();
-	R.col(1) = R.col(2).cross(R.col(0));
-	Eigen::Matrix4<genType> viewMatrix{};
-	viewMatrix.topLeftCorner<3, 3>() = R.transpose();
-	viewMatrix.topRightCorner<3, 1>() = -R.transpose() * position;
-	viewMatrix(3, 3) = 1.0f;
-	return viewMatrix;
+	R.col(0) = s;
+	R.col(1) = u;
+	R.col(2) = -f;
+	Eigen::Matrix4<genType> Result;
+	Result.topLeftCorner<3, 3>() = R;
+	Result(0, 3) = -(s.dot(eye));
+	Result(1, 3) = -(u.dot(eye));
+	Result(2, 3) = (f.dot(eye));
+	Result(3, 3) = 1.0f;
+	return Result;
 }
 
 
 template <class genType>
-Eigen::Matrix4<genType> perspective(genType fovY, genType aspect, genType n, genType f)
+Eigen::Matrix4<genType> perspective(const genType fovY, const genType aspect, const genType n, const genType f)
 {
-	genType theta = fovY * 0.5;
+	genType theta = fovY * static_cast<genType>(0.5);
 	genType range = f - n;
-	genType invtan = 1. / std::tan(theta);
-	Eigen::Matrix4<genType> projectionMatrix{};
+	genType invtan = static_cast<genType>(1) / std::tan(theta);
+	Eigen::Matrix4<genType> projectionMatrix; projectionMatrix.setZero();
 	projectionMatrix(0, 0) = invtan / aspect;
 	projectionMatrix(1, 1) = invtan;
 	projectionMatrix(2, 2) = -(n + f) / range;
-	projectionMatrix(3, 2) = -1;
-	projectionMatrix(2, 3) = -2 * n * f / range;
-	projectionMatrix(3, 3) = 0;
+	projectionMatrix(3, 2) = static_cast<genType>(-1);
+	projectionMatrix(2, 3) = static_cast<genType>(-2) * n * f / range;
 	return projectionMatrix;
 }

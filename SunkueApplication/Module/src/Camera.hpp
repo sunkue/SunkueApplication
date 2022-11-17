@@ -12,9 +12,9 @@ class Camera : public TransformComponnent, public ClippedWindow, public GuiObjec
 	SunkueMakeGetSet(Eigen::Vector3f, up) { 0., 1., 0. };
 	SunkueMakeGetSet(float, fovy) { 45.0 };
 	SunkueMakeGetSet(float, n) { 0.1 };
-	SunkueMakeGetSet(float, f) { 2000. };
+	SunkueMakeGetSet(float, f) { std::numeric_limits<float>::max() };
 private:
-	SunkueMakeVar(Eigen::Matrix4f, viewMatrix){};
+	SunkueMakeVar(Eigen::Matrix4f, viewMatrix) {};
 	SunkueMakeGet(Eigen::Matrix4f, viewMatrix);
 	SunkueMakeVar(Eigen::Matrix4f, projectionMatrix) {};
 	SunkueMakeGet(Eigen::Matrix4f, projectionMatrix);
@@ -26,9 +26,9 @@ public:
 	virtual void DrawGui() {
 		ImGui::Begin("Main Camera");
 		ImGui::DragFloat("fovy", &_fovy, 1, 10, 180, "%.1f", 1);
-		ImGui::DragFloat3("position", _position.data(), 0.1, -10, 10, "%.1f", 1);
-		ImGui::DragFloat3("target", _target.data(), 0.1, -10, 10, "%.1f", 1);
-		ImGui::DragFloat3("up", _up.data(), 0.1, -10, 10, "%.1f", 1);
+		ImGui::DragFloat3("position", _position.data(), 1, -5000, 5000, "%.1f", 1);
+		ImGui::DragFloat3("target", _target.data(), 1, -5000, 5000, "%.1f", 1);
+		ImGui::DragFloat3("up", _up.data(), 0.1, -1, 1, "%.1f", 1);
 		ClippedWindow::DrawChildGui("ViewPort");
 		ImGui::End();
 	}
