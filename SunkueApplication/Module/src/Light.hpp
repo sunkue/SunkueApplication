@@ -6,14 +6,14 @@
 class Light {
 protected:
 	Eigen::Array4f color{ 1, 1, 1, 0 };
-	Eigen::Array4f power{ 1, 1, 1, 0 }; // ambient, diffuse, specular
+	Eigen::Array4f power{ 0.5, 1, 1, 0 }; // ambient, diffuse, specular
 public:
 	const float* data()const { return color.data(); }
 };
 
 class DirectionalLight : public Light {
 protected:
-	Eigen::Vector4f direction{ 0, 0, 1, 0 };
+	Eigen::Vector4f direction{ 100, 100, 33, 0 };
 };
 
 class Sun : public DirectionalLight, public GuiObject {

@@ -4,6 +4,7 @@
 
 class TransformComponnent {
 protected:
+//	Affine3f
 	Eigen::Translation3f t;
 	Eigen::Quaternionf r;
 	Eigen::AlignedScaling3f s;
@@ -20,7 +21,7 @@ public:
 		t = t * move;
 	}
 	void rotate(const Eigen::Quaternionf& move) {
-		r *= move;
+		r = r * move;
 	}
 	void scale(const float& move) {
 		s = s + Eigen::AlignedScaling3f(move, move, move);

@@ -14,7 +14,7 @@ private:
 	clk::time_point timeStamp{};
 public:
 	void Regist(Actor& item) {
-		actorList().push_back({ item });
+		actorList().push_back({ item }); // 업데이트 순서 고정을 위하여 뒤로 삽입
 	};
 	void UnRegist(const Actor& item) {
 		actorList().remove_if([&](const auto& a) { return &a.get() == &item; });
@@ -23,7 +23,7 @@ public:
 	void Update() {
 		auto prev = timeStamp; timeStamp = clk::now();
 		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(timeStamp - prev);
-		float elapsedd = static_cast<float>(elapsed.count()) / 1000.f;
+		double elapsedd = static_cast<double>(elapsed.count()) / 1000.;
 		for (auto& item : actorList()) {
 			item.get().Update(elapsedd);
 		}

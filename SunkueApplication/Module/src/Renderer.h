@@ -14,6 +14,7 @@ private:
 	SunkueMakeGetSet(DrawAbleList, drawAbleItems);
 	SunkueMakeGetSet(Camera, mainCamera);
 	SunkueMakeGetSet(Sun, sun);
+	SunkueMakeGetSet(DrawAbleList::iterator, selectedItem);
 	GLFWwindow* window;
 public:
 	void Render() {
@@ -21,9 +22,11 @@ public:
 		Draw();
 	}
 	void Regist(DrawAble& item) {
-		drawAbleItems().push_back({ item });
+		drawAbleItems().push_front({ item });
+		_selectedItem = drawAbleItems().begin();
 	};
 	void UnRegist(const DrawAble& item) {
+		if (&_selectedItem->get() == &item)_selectedItem = DrawAbleList::iterator();
 		drawAbleItems().remove_if([&](const auto& a) { return &a.get() == &item; });
 	};
 	void ResetCamera();

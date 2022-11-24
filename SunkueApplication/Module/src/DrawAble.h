@@ -24,14 +24,14 @@ public:
 	}
 };
 
-class DrawAble
+class DrawAble : public TransformComponnent
 {
 protected:
 	GLuint vao{};
 	GLuint vbo{};
 	size_t vertexNum{};
 	GLenum drawMode{ GL_POINTS };// GL_TRIANGLES
-	float shininess{ 64 };
+	float shininess{ 128 };
 	SunkueMakeGetSet(Bound, bound);
 public:
 	Shader& shader;

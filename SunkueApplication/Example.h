@@ -2,7 +2,7 @@
 
 #include "Module/Application";
 
-class TestActor : public Actor, public DrawAble, public GuiObject, public TransformComponnent
+class TestActor : public Actor, public DrawAble, public GuiObject
 {
 private:
 	GLfloat pointSize{ 0.25 };
@@ -20,6 +20,7 @@ public:
 	}
 
 	virtual void DrawGui()override {
+		ImPlot::ShowDemoWindow();
 		ImGui::Begin("Actor A");
 		ImGui::DragFloat("pointSize", &pointSize, 0.1, 0.1, 2, "%.3f", 1);
 		ImGui::DragFloat("shininess", &shininess, 0.1, 0, 200, "%.1f", 1);

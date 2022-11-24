@@ -4,6 +4,12 @@
 
 class MouseEventManager
 {
+	MouseEventManager() = default;
+public:
+	static MouseEventManager& Get() {
+		static MouseEventManager inst;
+		return inst;
+	}
 public:
 	struct ScrollEvent
 	{

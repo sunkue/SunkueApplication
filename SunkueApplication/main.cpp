@@ -8,7 +8,7 @@ int main()
 {
 	Shader::ShaderDir() = "Module/src/shader";
 
-	SunkueWindow win;
+	SunkueWindow win(1240, 720);
 
 	TestActor a = MakeTestActor();
 	a.EnableGui();
@@ -17,7 +17,7 @@ int main()
 	win.renderer()->mainCamera().EnableGui();
 	win.renderer()->sun().EnableGui();
 	win.renderer()->Regist(a);
-	
+	win.renderer()->ResetCamera();
 	win.system()->Regist(a);
 	
 	win.gui()->Regist(a);
@@ -62,5 +62,5 @@ TestActor MakeTestActor() {
 	};
 	TestActor a(Shader::PhongPcd());
 	a.Init(points, normals, colors);
-	return std::move(a);
+	return a;
 }

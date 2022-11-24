@@ -44,6 +44,13 @@ TEMPLATE_SHADER_SET(Eigen::Affine3f)
 	glUniformMatrix4fv(UNIFORM_LOCATION, 1, GL_FALSE, value.matrix().data());
 }
 
+using ColorMap = std::array<ImVec4, 4>;
+TEMPLATE_SHADER_SET(ColorMap)
+{
+	glUniformMatrix4fv(UNIFORM_LOCATION, 1, GL_FALSE, &value.front().x);
+}
+
+
 #define SET_LIGHT_POWER()								\
 set(uniform_var_name + ".power.ambient", value->ambient);		\
 set(uniform_var_name + ".power.diffuse", value->diffuse);		\

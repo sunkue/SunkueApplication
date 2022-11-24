@@ -4,7 +4,14 @@
 
 class KeyboardEventManager
 {
+	KeyboardEventManager() = default;
 public:
+	static KeyboardEventManager& Get() {
+		static KeyboardEventManager inst;
+		return inst;
+	}
+public:
+
 	struct KeyEvent
 	{
 		KeyEvent(int key, int code, int action, int modifiers, clk::time_point time_of_event)

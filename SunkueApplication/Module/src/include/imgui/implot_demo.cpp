@@ -2085,7 +2085,6 @@ void Demo_ColormapWidgets() {
     ImGui::ColorButton("##Display",col,ImGuiColorEditFlags_NoInputs);
     ImGui::SameLine();
     ImPlot::ColormapSlider("Slider", &t, &col, "%.3f", cmap);
-
     ImPlot::ColormapIcon(cmap); ImGui::SameLine(); ImGui::Text("Icon");
 
     static ImPlotColormapScaleFlags flags = 0;

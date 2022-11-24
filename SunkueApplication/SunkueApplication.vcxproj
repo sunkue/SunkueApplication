@@ -26,7 +26,7 @@
     <ClInclude Include="Module\src\ClippedWindow.hpp" />
     <ClInclude Include="Module\src\DrawAble.h" />
     <ClInclude Include="Module\src\GuiManager.h" />
-    <ClInclude Include="Module\src\Interaction.h" />
+    <ClInclude Include="Module\src\include\imgui\imconfig.h" />
     <ClInclude Include="Module\src\KeyboardEvent.h" />
     <ClInclude Include="Module\src\Light.hpp" />
     <ClInclude Include="Module\src\MouseEvent.h" />
@@ -51,6 +51,7 @@
     <ClCompile Include="Module\src\include\imgui\imgui.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\imgui_demo.cpp" />
     <ClCompile Include="Module\src\include\imgui\imgui_draw.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
@@ -69,9 +70,6 @@
     <ClCompile Include="Module\src\include\imgui\implot.cpp" />
     <ClCompile Include="Module\src\include\imgui\implot_demo.cpp" />
     <ClCompile Include="Module\src\include\imgui\implot_items.cpp" />
-    <ClCompile Include="Module\src\Interaction.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="Module\src\KeyboardEvent.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>

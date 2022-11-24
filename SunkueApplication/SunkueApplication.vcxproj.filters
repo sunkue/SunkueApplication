@@ -37,9 +37,6 @@
     <Filter Include="ModuleFile\SubModule">
       <UniqueIdentifier>{d575d748-524c-47a8-856d-db46f17115a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Window\Interaction\Interaction">
-      <UniqueIdentifier>{db0a0d2f-d062-4df1-9634-238991923a37}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Window\Window">
       <UniqueIdentifier>{c272e0f8-0f99-4f2c-8968-d230604eab62}</UniqueIdentifier>
     </Filter>
@@ -108,9 +105,6 @@
     <ClInclude Include="Module\src\Actor.h">
       <Filter>Window\System\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Module\src\Interaction.h">
-      <Filter>Window\Interaction\Interaction</Filter>
-    </ClInclude>
     <ClInclude Include="Module\src\SunkueWindow.h">
       <Filter>Window\Window</Filter>
     </ClInclude>
@@ -150,6 +144,9 @@
     <ClInclude Include="Example.h">
       <Filter>Main</Filter>
     </ClInclude>
+    <ClInclude Include="Module\src\include\imgui\imconfig.h">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -185,9 +182,6 @@
     <ClCompile Include="Module\src\Actor.cpp">
       <Filter>Window\System\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Module\src\Interaction.cpp">
-      <Filter>Window\Interaction\Interaction</Filter>
-    </ClCompile>
     <ClCompile Include="Module\src\SunkueWindow.cpp">
       <Filter>Window\Window</Filter>
     </ClCompile>
@@ -212,15 +206,15 @@
     <ClCompile Include="Module\src\include\imgui\implot_items.cpp">
       <Filter>Helper\Dependency\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="Module\src\include\imgui\imgui_demo.cpp">
+      <Filter>Helper\Dependency\imgui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Module\Application">
       <Filter>ModuleFile</Filter>
     </None>
     <None Include="Module\Base">
-      <Filter>ModuleFile\SubModule</Filter>
-    </None>
-    <None Include="Module\Interaction">
       <Filter>ModuleFile\SubModule</Filter>
     </None>
     <None Include="Module\Renderer">
@@ -245,6 +239,9 @@
       <Filter>Window\Renderer\Shader\glsl</Filter>
     </None>
     <None Include="Module\System">
+      <Filter>ModuleFile\SubModule</Filter>
+    </None>
+    <None Include="Module\Interaction">
       <Filter>ModuleFile\SubModule</Filter>
     </None>
   </ItemGroup>
