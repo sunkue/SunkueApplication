@@ -35,7 +35,7 @@ int main()
 	auto data = ReadPcdFile("D:\\_샘플PCD\\Raw221103_ec20_ov1_vc1.75_in.pwn");
 
 	// 윈도우 창을 생성한다. 
-// 여기서 opgl 초기화를 진행하기 때문에, Object 생성전에 만들어 주어야 한다.
+	// 여기서 opgl 초기화를 진행하기 때문에, Object 생성전에 만들어 주어야 한다.
 	SunkueWindow win(1240, 720);
 
 	// Object 생성하기전에, 셰이더 폴더의 위치를 알려준다.
@@ -46,8 +46,8 @@ int main()
 
 	// std::string 과 vector<double> 로 Feature 를 만든다.
 	// 각각 이름과 정보이다.
-	std::vector<double> s1; s1.reserve(data.first.size()); for (int i = 0; i < s1.size(); i++)s1.push_back(i);
-	In3D::App::Values   s2; s2.reserve(data.first.size()); for (int i = 0; i < s1.size(); i++)s1.push_back(0.01 * (i % 1000));
+	std::vector<double> s1; s1.reserve(data.first.size()); for (int i = 0; i < data.first.size(); i++)s1.push_back(i);
+	In3D::App::Values   s2; s2.reserve(data.first.size()); for (int i = 0; i < data.first.size(); i++)s2.push_back(0.01 * double(i % 1000));
 	pcd.AddFeature("sample1", s1);
 	pcd.AddFeature("sample2", s2);
 

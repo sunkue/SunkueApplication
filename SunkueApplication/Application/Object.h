@@ -94,8 +94,7 @@ namespace In3D {
 
 		public:
 			void AddFeature(const std::string& name, const Values& values) {
-				Values v = values;
-				AddFeature(name, std::move(v));
+				AddFeature(name, Values(values));
 			}
 
 			void AddFeature(const std::string& name, const std::vector<double>& values) {
@@ -103,6 +102,7 @@ namespace In3D {
 			}
 
 			void AddFeature(const std::string& name, Values&& values) {
+				if (values.stdDev == -1) values.init();
 				features[name] = std::move(values);
 			}
 
