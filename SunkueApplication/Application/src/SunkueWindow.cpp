@@ -92,8 +92,8 @@ void SunkueWindow::BindEventFuncs()
 		auto xDiff = pos.xPos - MouseEventManager::Get().GetPrevX();
 		auto yDiff = pos.yPos - MouseEventManager::Get().GetPrevY();
 		if (MouseEventManager::Get().GetLeftClick() && MouseEventManager::Get().GetRightClick()) {
-			constexpr double xSpeed = 1.;
-			constexpr double ySpeed = -1.;
+			constexpr double xSpeed = -1.;
+			constexpr double ySpeed = +1.;
 			auto& camera = this->renderer()->mainCamera();
 			camera.localTranslate(camera.right() * xDiff * xSpeed);
 			camera.localTranslate(camera.up() * yDiff * ySpeed);

@@ -28,11 +28,8 @@ in VS_OUT
 {
 	vec3 worldPos;
 	vec3 normal;
-	vec3 color;
+	vec4 color;
 } fs_in;
-
-flat in vec2 center;
-flat in float radiusPixels;
 
 out vec4 o_color;
 
@@ -58,10 +55,6 @@ vec3 caculateLight(DirectionalLight light, vec3 viewDir, vec3 normal, vec3 albed
 
 void main()
 {
-	vec2 coord = (gl_FragCoord.xy - center) / radiusPixels;
-    if (length(coord) > 1.0)
-        discard;
-
-	o_color = vec4(caculateLight(u_sun, u_camera_pos - fs_in.worldPos, fs_in.normal, fs_in.color, u_shininess), 1);
+	o_color = vec4(caculateLight(u_sun, u_camera_pos - fs_in.worldPos, fs_in.normal, fs_in.color.rgb, u_shininess), o_color.a);
 }
 

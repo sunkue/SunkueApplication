@@ -13,12 +13,13 @@ void Shader::BindUbo(const std::string& name) {
 }
 
 void Shader::SetUbo(const std::string& name, const void* data) {
-	UboMap.at(name).get().Set(data);
+	if (0 != UboMap.count(name))
+		UboMap.at(name).get().Set(data);
 }
 
 Shader& Shader::PhongPcd()
 {
-	bool initonce = true;
+	static bool initonce = true;
 	std::vector<std::string> VS;
 	std::vector<std::string> FS;
 	std::vector<std::string> GS;
@@ -38,9 +39,53 @@ Shader& Shader::PhongPcd()
 	return shader;
 }
 
+Shader& Shader::PhongMesh()
+{
+	static bool initonce = true;
+	std::vector<std::string> VS;
+	std::vector<std::string> FS;
+	std::vector<std::string> GS;
+	if (initonce) {
+		VS.emplace_back(Shader::ShaderDir() + "/mesh.vert");
+		FS.emplace_back(Shader::ShaderDir() + "/mesh_phong.frag");
+	}
+	static Shader shader(VS, FS, GS);
+	if (initonce) {
+		shader.BindUbo<Eigen::Matrix4f>("V_MAT");
+		shader.BindUbo<Eigen::Matrix4f>("P_MAT");
+//		shader.BindUbo<Eigen::Array4i>("RESOLUTION");
+		shader.BindUbo<Eigen::Vector3f>("CAMERA");
+		shader.BindUbo<DirectionalLight>("LIGHT");
+	}
+	initonce = false;
+	return shader;
+}
+
+Shader& Shader::PhongScalarMesh()
+{
+	static bool initonce = true;
+	std::vector<std::string> VS;
+	std::vector<std::string> FS;
+	std::vector<std::string> GS;
+	if (initonce) {
+		VS.emplace_back(Shader::ShaderDir() + "/mesh_scalar.vert");
+		FS.emplace_back(Shader::ShaderDir() + "/mesh_phong.frag");
+	}
+	static Shader shader(VS, FS, GS);
+	if (initonce) {
+		shader.BindUbo<Eigen::Matrix4f>("V_MAT");
+		shader.BindUbo<Eigen::Matrix4f>("P_MAT");
+	//	shader.BindUbo<Eigen::Array4i>("RESOLUTION");
+		shader.BindUbo<Eigen::Vector3f>("CAMERA");
+		shader.BindUbo<DirectionalLight>("LIGHT");
+	}
+	initonce = false;
+	return shader;
+}
+
 Shader& Shader::PhongScalarPcd()
 {
-	bool initonce = true;
+	static bool initonce = true;
 	std::vector<std::string> VS;
 	std::vector<std::string> FS;
 	std::vector<std::string> GS;

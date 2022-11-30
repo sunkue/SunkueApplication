@@ -4,7 +4,7 @@
 
 class TransformComponnent {
 protected:
-//	Affine3f
+	//	Affine3f
 	Eigen::Translation3f t;
 	Eigen::Quaternionf r;
 	Eigen::AlignedScaling3f s;
@@ -29,7 +29,7 @@ public:
 	void scale(const Eigen::AlignedScaling3f& move) {
 		s = s + move;
 	}
-	Eigen::Affine3f modelMatrix() {
+	Eigen::Affine3f modelMatrix()const {
 		return t * r * s;
 	}
 };

@@ -24,21 +24,29 @@ public:
 	}
 };
 
-class DrawAble : public TransformComponnent
+class DrawAble
 {
+	friend class Renderer;
 protected:
 	GLuint vao{};
-	GLuint vbo{};
+	GLuint vbo{}, ebo{};
 	size_t vertexNum{};
-	GLenum drawMode{ GL_POINTS };// GL_TRIANGLES
+	size_t indexNum{}; // 0 < indexNum ? Triangle Mesh : Point Cloud
 	float shininess{ 128 };
 	SunkueMakeGetSet(Bound, bound);
-public:
+	SunkueMakeGetSet(TransformComponnent, transform);
+protected:
 	Shader& shader;
 	DrawAble(Shader& shader) :shader{ shader } {}
 	virtual void Draw() {};
 	template<class genType>
-	void Init(const std::vector<Eigen::Vector3<genType>>& points, const std::vector<Eigen::Vector3<genType>>& normals, const std::vector<Eigen::Vector3<genType>>& colors);
+	void Init(const std::vector<Eigen::Vector3<genType>>& points
+		, const std::vector<Eigen::Vector3<genType>>& normals
+		, const std::vector<Eigen::Vector3<genType>>& colors
+		, const std::vector<unsigned int>& indices = {});
 	template<class genType>
-	void Init(const std::vector<Eigen::Vector3<genType>>& points, const std::vector<Eigen::Vector3<genType>>& normals, const std::vector<genType>& scalars);
+	void Init(const std::vector<Eigen::Vector3<genType>>& points
+		, const std::vector<Eigen::Vector3<genType>>& normals
+		, const std::vector<genType>& scalars
+		, const std::vector<unsigned int>& indices = {});
 };

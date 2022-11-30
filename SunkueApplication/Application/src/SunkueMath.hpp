@@ -65,3 +65,18 @@ Eigen::Matrix4<genType> perspective(const genType fovY, const genType aspect, co
 	projectionMatrix(2, 3) = static_cast<genType>(-2) * n * f / range;
 	return projectionMatrix;
 }
+
+#include <vector>
+#include <algorithm>
+#include <numeric>
+
+// mean , stdDev
+inline std::pair<double, double> StandardDeviation(const std::vector<double>& src) {
+	const double mean = std::accumulate(src.begin(), src.end(), 0.) / src.size();
+	double devSum = std::inner_product(src.begin(), src.end(), src.begin(), 0.,
+		[](const double sum, const double dev) {return sum + dev; },
+		[mean](const double a, const double b) {return (a - mean) * (a - mean); }
+	);
+	double stdDev = std::sqrt(devSum / (src.size() - 1));
+	return std::make_pair(mean, stdDev);
+}

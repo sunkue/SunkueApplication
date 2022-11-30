@@ -4,11 +4,12 @@
 #include "ClippedWindow.hpp"
 
 class GuiObject {
-public:
+	friend class GuiManager;
+protected:
 	ClippedWindow area;
-	SunkueMakeVar(mutable bool, enable) = false;
+	SunkueMakeVar(mutable bool, enable) = true;
 	SunkueMakeGet(bool, enable);
-public:
+protected:
 	~GuiObject() { DisableGui(); }
 	virtual void DrawGui() {};
 	void EnableGui()const { _enable = true; };
@@ -69,6 +70,7 @@ public:
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
+		//ImPlot::ShowDemoWindow();
 		for (auto& o : guiObjects) {
 			if (!o.get().enable())continue;
 			o.get().DrawGui();

@@ -1,20 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Helper">
-      <UniqueIdentifier>{9204c865-58ad-4665-bc3f-66f12e496550}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Helper\Dependency">
-      <UniqueIdentifier>{7772c5ee-0520-41fc-b90a-06e835eec28c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main">
       <UniqueIdentifier>{80663648-cb9e-40e7-8cd5-0fbf91ae49b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ModuleFile">
-      <UniqueIdentifier>{044a780c-c3d4-4f8f-aac6-366d67427db1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Helper\Dependency\imgui">
-      <UniqueIdentifier>{88b3def3-e2d5-4e85-9297-0fb60ba7e77d}</UniqueIdentifier>
     </Filter>
     <Filter Include="Window">
       <UniqueIdentifier>{49610037-1a93-49fa-858a-b745f5f4beef}</UniqueIdentifier>
@@ -31,20 +19,11 @@
     <Filter Include="Window\Interaction\Mouse">
       <UniqueIdentifier>{d8d70c21-e2c7-4659-a058-9aec337dc37f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Window\Interaction\WindowEvent">
-      <UniqueIdentifier>{a15aca65-2bd5-4d6e-909a-bd7ad62e0e68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ModuleFile\SubModule">
-      <UniqueIdentifier>{d575d748-524c-47a8-856d-db46f17115a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Window\Window">
       <UniqueIdentifier>{c272e0f8-0f99-4f2c-8968-d230604eab62}</UniqueIdentifier>
     </Filter>
     <Filter Include="Window\GuiManager">
       <UniqueIdentifier>{113d99e2-1cec-428c-b285-01f3c69f5942}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Helper\Dependency\glad">
-      <UniqueIdentifier>{351472f6-9834-47ab-8fe6-27ccc15048ac}</UniqueIdentifier>
     </Filter>
     <Filter Include="Componnent">
       <UniqueIdentifier>{0d608655-5eda-4b1b-a94d-69f9cd0d6393}</UniqueIdentifier>
@@ -82,167 +61,239 @@
     <Filter Include="Window\Renderer\DrawAble">
       <UniqueIdentifier>{c1793962-8f80-41ad-a24a-0182e4ff68f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{fdd16741-b3c6-4aa3-9369-20936ff377dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Helper">
+      <UniqueIdentifier>{9204c865-58ad-4665-bc3f-66f12e496550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Helper\Dependency">
+      <UniqueIdentifier>{7772c5ee-0520-41fc-b90a-06e835eec28c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Helper\Dependency\imgui">
+      <UniqueIdentifier>{88b3def3-e2d5-4e85-9297-0fb60ba7e77d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Object">
+      <UniqueIdentifier>{6b45122c-ca74-4215-b260-701b448f883f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Helper\Def">
+      <UniqueIdentifier>{1573c253-6db4-43fe-9c0a-1371493edf05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Helper\Helper">
+      <UniqueIdentifier>{60134a7e-a861-4ec7-8770-282f52d2bf71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Helper\ModuleFile">
+      <UniqueIdentifier>{044a780c-c3d4-4f8f-aac6-366d67427db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Helper\ModuleFile\SubModule">
+      <UniqueIdentifier>{d575d748-524c-47a8-856d-db46f17115a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application">
+      <UniqueIdentifier>{207a1784-edd7-4a7e-b19a-3809c0e2e2d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\GuiManager">
+      <UniqueIdentifier>{fac7f016-e2e9-4a1a-9b00-459405ca3e26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Interaction">
+      <UniqueIdentifier>{ab2966d8-ad92-4f47-9966-2ec0d31ce357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer">
+      <UniqueIdentifier>{c6f501aa-434a-44f2-a2da-b802cfb119a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\System">
+      <UniqueIdentifier>{ca27b643-146d-4edb-8685-fe774cff3bed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Window">
+      <UniqueIdentifier>{6750485e-54ed-463a-b798-b4786b897f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer\Camera">
+      <UniqueIdentifier>{eb08f860-c724-45ff-a2c7-6ca9105f7a72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer\ClippedWindow">
+      <UniqueIdentifier>{d96f455b-1bb2-4c4a-b47c-a924b32507b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer\Compponent">
+      <UniqueIdentifier>{d2d309c1-7fb9-4db3-93e0-d7a83395fc81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer\DrawAble">
+      <UniqueIdentifier>{9acc2af2-8fe6-43b6-a393-796592bafc6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer\Light">
+      <UniqueIdentifier>{1cca558e-acd0-4348-87bb-a8a013f60a13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer\Renderer">
+      <UniqueIdentifier>{56ceeceb-7851-4e54-83f7-135575741988}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer\Shader">
+      <UniqueIdentifier>{504fc885-c9ab-4e30-8f72-5b001bb9cf95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application\Application\Renderer\Shader\glsl">
+      <UniqueIdentifier>{493dd26f-bcb1-4a0d-88e7-3175b64a7eee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Module\src\Std.h">
-      <Filter>Helper\Dependency</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\KeyboardEvent.h">
-      <Filter>Window\Interaction\Keyboard</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\MouseEvent.h">
-      <Filter>Window\Interaction\Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\Shader.h">
-      <Filter>Window\Renderer\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\Shader.hpp">
-      <Filter>Window\Renderer\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\AppDependency.h">
-      <Filter>Helper\Dependency</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\Actor.h">
-      <Filter>Window\System\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\SunkueWindow.h">
-      <Filter>Window\Window</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\GuiManager.h">
-      <Filter>Window\GuiManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\UniformBlockObject.hpp">
-      <Filter>Window\Renderer\Shader</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\Transform.hpp">
-      <Filter>Componnent\Transform</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\SunkueMath.hpp">
-      <Filter>Helper</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\Camera.hpp">
-      <Filter>Window\Renderer\Cameara</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\ClippedWindow.hpp">
-      <Filter>Window\Renderer\ClippedWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\SunkueDefine.h">
-      <Filter>Helper</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\Renderer.h">
-      <Filter>Window\Renderer\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\Light.hpp">
-      <Filter>Window\Renderer\Light</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\System.h">
-      <Filter>Window\System\System</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\DrawAble.h">
-      <Filter>Window\Renderer\DrawAble</Filter>
-    </ClInclude>
-    <ClInclude Include="Example.h">
-      <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="Module\src\include\imgui\imconfig.h">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="Application\Object.cpp">
+      <Filter>Application\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\imgui.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\imgui_demo.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\imgui_draw.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\imgui_impl_glfw.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\imgui_impl_opengl3.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\imgui_tables.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\imgui_widgets.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\implot.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\implot_demo.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\include\imgui\implot_items.cpp">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\SunkueWindow.cpp">
+      <Filter>Application\Application\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\System.cpp">
+      <Filter>Application\Application\System</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\KeyboardEvent.cpp">
+      <Filter>Application\Application\Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\MouseEvent.cpp">
+      <Filter>Application\Application\Interaction</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\GuiManager.cpp">
+      <Filter>Application\Application\GuiManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\DrawAble.cpp">
+      <Filter>Application\Application\Renderer\DrawAble</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\Renderer.cpp">
+      <Filter>Application\Application\Renderer\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Application\src\Shader.cpp">
+      <Filter>Application\Application\Renderer\Shader</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\imgui.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\imgui_draw.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\imgui_impl_glfw.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\imgui_impl_opengl3.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\imgui_tables.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\imgui_widgets.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\KeyboardEvent.cpp">
-      <Filter>Window\Interaction\Keyboard</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\MouseEvent.cpp">
-      <Filter>Window\Interaction\Mouse</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\Shader.cpp">
-      <Filter>Window\Renderer\Shader</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\Actor.cpp">
-      <Filter>Window\System\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\SunkueWindow.cpp">
-      <Filter>Window\Window</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\GuiManager.cpp">
-      <Filter>Window\GuiManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\Renderer.cpp">
-      <Filter>Window\Renderer\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\System.cpp">
-      <Filter>Window\System\System</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\DrawAble.cpp">
-      <Filter>Window\Renderer\DrawAble</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\implot.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\implot_demo.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\implot_items.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Module\src\include\imgui\imgui_demo.cpp">
-      <Filter>Helper\Dependency\imgui</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Module\Application">
-      <Filter>ModuleFile</Filter>
+    <ClInclude Include="Application\Object.h">
+      <Filter>Application\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\SunkueMath.hpp">
+      <Filter>Application\Helper\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\SunkueDefine.h">
+      <Filter>Application\Helper\Def</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\include\imgui\imconfig.h">
+      <Filter>Application\Helper\Dependency\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\AppDependency.h">
+      <Filter>Application\Helper\Dependency</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\Std.h">
+      <Filter>Application\Helper\Dependency</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\SunkueWindow.h">
+      <Filter>Application\Application\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\System.h">
+      <Filter>Application\Application\System</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\KeyboardEvent.h">
+      <Filter>Application\Application\Interaction</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\MouseEvent.h">
+      <Filter>Application\Application\Interaction</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\GuiManager.h">
+      <Filter>Application\Application\GuiManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\Camera.hpp">
+      <Filter>Application\Application\Renderer\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\Transform.hpp">
+      <Filter>Application\Application\Renderer\Compponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\ClippedWindow.hpp">
+      <Filter>Application\Application\Renderer\ClippedWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\DrawAble.h">
+      <Filter>Application\Application\Renderer\DrawAble</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\Light.hpp">
+      <Filter>Application\Application\Renderer\Light</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\Renderer.h">
+      <Filter>Application\Application\Renderer\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\Shader.h">
+      <Filter>Application\Application\Renderer\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\Shader.hpp">
+      <Filter>Application\Application\Renderer\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="Application\src\UniformBlockObject.hpp">
+      <Filter>Application\Application\Renderer\Shader</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Application\Application">
+      <Filter>Application\Helper\ModuleFile</Filter>
     </None>
-    <None Include="Module\Base">
-      <Filter>ModuleFile\SubModule</Filter>
+    <None Include="Application\Base">
+      <Filter>Application\Helper\ModuleFile\SubModule</Filter>
     </None>
-    <None Include="Module\Renderer">
-      <Filter>ModuleFile\SubModule</Filter>
+    <None Include="Application\Gui">
+      <Filter>Application\Helper\ModuleFile\SubModule</Filter>
     </None>
-    <None Include="Module\Window">
-      <Filter>ModuleFile\SubModule</Filter>
+    <None Include="Application\Interaction">
+      <Filter>Application\Helper\ModuleFile\SubModule</Filter>
     </None>
-    <None Include="Module\Gui">
-      <Filter>ModuleFile\SubModule</Filter>
+    <None Include="Application\Renderer">
+      <Filter>Application\Helper\ModuleFile\SubModule</Filter>
     </None>
-    <None Include="Module\src\shader\default.vert">
-      <Filter>Window\Renderer\Shader\glsl</Filter>
+    <None Include="Application\System">
+      <Filter>Application\Helper\ModuleFile\SubModule</Filter>
     </None>
-    <None Include="Module\src\shader\pcd_unlit.frag">
-      <Filter>Window\Renderer\Shader\glsl</Filter>
+    <None Include="Application\Window">
+      <Filter>Application\Helper\ModuleFile\SubModule</Filter>
     </None>
-    <None Include="Module\src\shader\pcd.vert">
-      <Filter>Window\Renderer\Shader\glsl</Filter>
+    <None Include="Application\src\shader\mesh.vert">
+      <Filter>Application\Application\Renderer\Shader\glsl</Filter>
     </None>
-    <None Include="Module\src\shader\pcd_phong.frag">
-      <Filter>Window\Renderer\Shader\glsl</Filter>
+    <None Include="Application\src\shader\mesh_phong.frag">
+      <Filter>Application\Application\Renderer\Shader\glsl</Filter>
     </None>
-    <None Include="Module\System">
-      <Filter>ModuleFile\SubModule</Filter>
+    <None Include="Application\src\shader\mesh_scalar.vert">
+      <Filter>Application\Application\Renderer\Shader\glsl</Filter>
     </None>
-    <None Include="Module\Interaction">
-      <Filter>ModuleFile\SubModule</Filter>
+    <None Include="Application\src\shader\pcd.vert">
+      <Filter>Application\Application\Renderer\Shader\glsl</Filter>
+    </None>
+    <None Include="Application\src\shader\pcd_phong.frag">
+      <Filter>Application\Application\Renderer\Shader\glsl</Filter>
+    </None>
+    <None Include="Application\src\shader\pcd_scalar.vert">
+      <Filter>Application\Application\Renderer\Shader\glsl</Filter>
     </None>
   </ItemGroup>
 </Project>
