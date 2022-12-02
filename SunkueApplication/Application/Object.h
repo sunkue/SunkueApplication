@@ -55,6 +55,7 @@ namespace In3D {
 				Feature currentFeature{};
 				GLfloat pointSize = 0.25;
 				bool showNormalColor = false;
+				bool pseudoColorLerp = false;
 				int pseudoColorNum = 4; // [2, pseudoColor.size()]
 			}detail;
 		private:
@@ -122,6 +123,7 @@ namespace In3D {
 				}
 				shader.Set("u_show_normal_color", detail.showNormalColor);
 				shader.Set("u_pseudo_color_count", detail.pseudoColorNum);
+				shader.Set("u_pseudo_color_lerp", detail.pseudoColorLerp);
 				glBindVertexArray(vao);
 				0 < indexNum
 					? glDrawElements(GL_TRIANGLES, indexNum, GL_UNSIGNED_INT, nullptr)
@@ -157,10 +159,12 @@ namespace In3D {
 		private:
 			void DrawPseudoColor() {
 				ImGui::SetNextItemWidth(100);
+				ImGui::Checkbox("Lerp", &detail.pseudoColorLerp);
+				ImGui::SetNextItemWidth(100);
 				for (int i = 0; i < detail.pseudoColorNum; i++) {
 					ImGui::SetNextItemWidth(100);
 					ImGui::DragFloat(("V" + std::to_string(i)).c_str(), &pseudoColor[i].value, 0.001, -50000, 50000, "%.3f");
-					ImGui::SameLine();
+					if(detail.pseudoColorLerp)ImGui::SameLine();
 					ImGui::ColorEdit4(("PC" + std::to_string(i)).c_str(), &pseudoColor[i].color.x);
 				}
 				ImGui::SetNextItemWidth(100);
@@ -173,9 +177,10 @@ namespace In3D {
 					detail.pseudoColorNum = std::min(8, detail.pseudoColorNum + 1);
 					SetPseudoColorThresholdByDefault();
 				}
-				ImGui::SetNextItemWidth(100);
+				ImGui::SameLine();
 				if (ImGui::Button("Reset")) { SetPseudoColorThresholdByDefault(); }
 			}
+			// pseudoColorLerp
 			void DrawFeatureSelector() {
 				if (!detail.currentFeature._Ptr) return;
 				ImGui::SetNextItemWidth(200);

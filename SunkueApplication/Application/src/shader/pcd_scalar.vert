@@ -24,6 +24,7 @@ layout(location = 2) in float a_scalar;
 uniform float u_radius;
 uniform bool u_show_normal_color = false;
 uniform int u_pseudo_color_count = 4;
+uniform bool u_pseudo_color_lerp = false;
 
 struct PseudoColor {
 	vec4 color; 
@@ -54,10 +55,12 @@ void main()
 		vec4 ce = u_pseudo_color[i + 1].color;
 		float diff = fe - fb;
 		float t = (a_scalar - fb)/diff;
+		t -= (1. - float(u_pseudo_color_lerp)) * t; // u_pseudo_color_lerp ? t : 0
 		vs_out.color = cb * (1. - t) + ce * t;
 	}
 	vs_out.color.rgb = (1. - float(u_show_normal_color)) * vs_out.color.rgb + float(u_show_normal_color) * vs_out.normal;
 	gl_Position = vec4(u_proj_mat * u_view_mat * vec4(vs_out.worldPos, 1));
+	if(vs_out.color.a == 0)gl_Position.x = 50000.;
 	center = u_viewport.xy + (0.5 * gl_Position.xy/gl_Position.w + 0.5) * u_viewport.zw;
     gl_PointSize =  max(1, u_viewport.w * u_proj_mat[1][1] * u_radius / gl_Position.w);
     radiusPixels = gl_PointSize / 2.0;
