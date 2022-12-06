@@ -32,7 +32,7 @@ std::pair<std::vector<Eigen::Vector3d>, std::vector<Eigen::Vector3d>> ReadPcdFil
 
 int main()
 {
-	auto data = ReadPcdFile("D:\\_샘플PCD\\Raw221103_ec20_ov1_vc1.75_in.pwn");
+	auto data = ReadPcdFile("D:\\_샘플PCD\\Raw221103_ec20_ov1_vc1.75_wlop_in.pwn");
 
 	// 윈도우 창을 생성한다. 
 	// 여기서 opgl 초기화를 진행하기 때문에, Object 생성전에 만들어 주어야 한다.
@@ -43,6 +43,7 @@ int main()
 
 	// Object 를 생성한다.
 	auto pcd = In3D::App::CreatePcdObject("pcd", data.first, data.second);
+	auto pcd2 = In3D::App::CreatePcdObject("pcd2", data.first, data.second);
 
 	// std::string 과 vector<double> 로 Feature 를 만든다.
 	// 각각 이름과 정보이다.
@@ -55,10 +56,14 @@ int main()
 	pcd.SetActivefeature("sample1");
 
 	// 화면에 그릴 친구들은 여기 등록한다.  // Draw 함수가 매 프레임 불린다.
-	win.renderer()->Regist(pcd);
+	win.renderer()->Regist(pcd.name(), pcd);
+	win.renderer()->Regist(pcd2.name(), pcd2);
+	pcd2.transform().translate({ 100,0,0 });
 
 	// GUI 를 사용할 친구들은 여기 등록한다. // DrawGui 함수가 매 프레임 불린다.
 	win.gui()->Regist(pcd);
+	win.gui()->Regist(pcd2);
+	win.gui()->Regist(win);
 	win.gui()->Regist(win.renderer()->mainCamera());
 	win.gui()->Regist(win.renderer()->sun());
 

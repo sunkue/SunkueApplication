@@ -50,8 +50,8 @@ namespace In3D {
 			detail::Features features;
 			std::array<detail::PseudoColor, 8> pseudoColor{}; // 최대 8개까지.
 		private:
+			SunkueMakeGetSet(std::string, name);
 			struct Detail {
-				std::string name{};
 				Feature currentFeature{};
 				GLfloat pointSize = 0.25;
 				bool showNormalColor = false;
@@ -71,7 +71,7 @@ namespace In3D {
 				pseudoColor[1].value = 0;
 				pseudoColor[2].value = 1;
 				pseudoColor[3].value = 2;
-				detail.name = name;
+				_name = name;
 			};
 		protected:
 			// pcd
@@ -132,7 +132,7 @@ namespace In3D {
 				glUseProgram(0);
 			}
 			virtual void DrawGui()override {
-				if (ImGui::Begin(detail.name.c_str())) {
+				if (ImGui::Begin(_name.c_str())) {
 					DrawFeatureSelector();
 					ImGui::Checkbox("ShowNormalAsColor", &detail.showNormalColor);
 					TreeNode("Histogram", [&]() {

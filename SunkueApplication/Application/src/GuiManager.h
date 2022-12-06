@@ -9,6 +9,7 @@ protected:
 	ClippedWindow area;
 	SunkueMakeVar(mutable bool, enable) = true;
 	SunkueMakeGet(bool, enable);
+	SunkueMakeSet(bool, enable);
 protected:
 	~GuiObject() { DisableGui(); }
 	virtual void DrawGui() {};

@@ -10,7 +10,8 @@ class Renderer
 public:
 	Renderer(GLFWwindow* w) : window{ w } { Init(); }
 private:
-	using DrawAbleList = std::list<std::reference_wrapper<DrawAble>>;
+	using DrawAbleList = std::map<std::string, std::reference_wrapper<DrawAble>>;
+
 	SunkueMakeGetSet(DrawAbleList, drawAbleItems);
 	SunkueMakeGetSet(Camera, mainCamera);
 	SunkueMakeGetSet(Sun, sun);
@@ -21,13 +22,19 @@ public:
 		Clear();
 		Draw();
 	}
-	void Regist(DrawAble& item) {
-		drawAbleItems().push_front({ item });
-		_selectedItem = drawAbleItems().begin();
+	void Regist(const std::string& name, DrawAble& item) {
+		_selectedItem = drawAbleItems().insert({ name, { item } }).first;
 	};
 	void UnRegist(const DrawAble& item) {
-		if (&_selectedItem->get() == &item)_selectedItem = DrawAbleList::iterator();
-		drawAbleItems().remove_if([&](const auto& a) { return &a.get() == &item; });
+		if (&_selectedItem->second.get() == &item)_selectedItem = DrawAbleList::iterator();
+		for (auto it = drawAbleItems().begin(); it != drawAbleItems().end();) {
+			if (&it->second.get() == &item) it = drawAbleItems().erase(it);
+			else ++it;
+		}
+	};
+	void UnRegist(const std::string& name) {
+		if (_selectedItem->first == name)_selectedItem = DrawAbleList::iterator();
+		drawAbleItems().erase(name);
 	};
 	void ResetCamera();
 private:
@@ -55,7 +62,7 @@ private:
 	void Draw() {
 		ReadyDraw();
 		for (auto& item : drawAbleItems()) {
-			item.get().Draw();
+			item.second.get().Draw();
 		}
 	}
 
@@ -69,6 +76,9 @@ private:
 		glEnable(GL_DEPTH_TEST);
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		glEnable(GL_PROGRAM_POINT_SIZE);
+
+		mainCamera().enable() = false;
+		sun().enable() = false;
 	}
 
 };
