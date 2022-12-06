@@ -35,7 +35,7 @@ void Renderer::ResetCamera()
 	Eigen::Array3f minimum; minimum.setConstant(std::numeric_limits<float>::max());
 	Eigen::Array3f maximum; maximum.setConstant(std::numeric_limits<float>::min());
 	for (auto& item : _drawAbleItems) {
-		auto m = item.second.get().transform().modelMatrix();
+		auto m = item.second.get().transform();
 		auto& min = m * item.second.get().bound().minimum();
 		auto& max = m * item.second.get().bound().maximum();
 		minimum.x() = std::min(minimum.x(), min.x());

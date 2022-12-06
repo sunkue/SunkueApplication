@@ -4,6 +4,7 @@ template<>
 void DrawAble::Init(const std::vector<Eigen::Vector3d>& points, const std::vector<Eigen::Vector3d>& normals, const std::vector<Eigen::Vector3d>& colors, const std::vector<unsigned int>& indices)
 {
 	_bound.set(points);
+	transform().pretranslate(-Eigen::Translation3f(_bound.center()).translation());
 	glDeleteVertexArrays(1, &vao);
 	glGenVertexArrays(1, &vao);
 	glDeleteBuffers(1, &vbo);
@@ -41,6 +42,7 @@ template<>
 void DrawAble::Init(const std::vector<Eigen::Vector3d>& points, const std::vector<Eigen::Vector3d>& normals, const std::vector<double>& scalars, const std::vector<unsigned int>& indices)
 {
 	_bound.set(points);
+	transform().pretranslate(-Eigen::Translation3f(_bound.center()).translation());
 	glDeleteVertexArrays(1, &vao);
 	glGenVertexArrays(1, &vao);
 	glDeleteBuffers(1, &vbo);

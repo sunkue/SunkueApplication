@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../Base"
-#include "Transform.hpp"
 #include "ClippedWindow.hpp"
 
 class Frame

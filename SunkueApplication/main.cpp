@@ -54,11 +54,11 @@ int main()
 
 	// 지금 디스플레이 할 피쳐를 이름을 통해 선택한다.
 	pcd.SetActivefeature("sample1");
-
+	Eigen::Affine3f a;
 	// 화면에 그릴 친구들은 여기 등록한다.  // Draw 함수가 매 프레임 불린다.
 	win.renderer()->Regist(pcd.name(), pcd);
 	win.renderer()->Regist(pcd2.name(), pcd2);
-	pcd2.transform().translate({ 100,0,0 });
+	pcd2.transform().translate(Eigen::Translation3f{ 100,0,0 }.translation());
 
 	// GUI 를 사용할 친구들은 여기 등록한다. // DrawGui 함수가 매 프레임 불린다.
 	win.gui()->Regist(pcd);

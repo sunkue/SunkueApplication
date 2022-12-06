@@ -1,5 +1,4 @@
 #include "../Base"
-#include "Transform.hpp"
 #include "Shader.h"
 #include "GuiManager.h"
 
@@ -8,7 +7,7 @@ struct Bound {
 	SunkueMakeGetSet(Eigen::Array3f, maximum);
 public:
 	Eigen::Array3f size() const { return _maximum - _minimum; }
-	Eigen::Array3f center() const { return (_minimum + _maximum) / 2; }
+	Eigen::Array3f center() const { return (_minimum + _maximum) / 2.; }
 	template<class gentype>
 	void set(const std::vector<Eigen::Vector3<gentype>>& points) {
 		_minimum = { std::numeric_limits<float>::max() };
@@ -34,7 +33,7 @@ protected:
 	size_t indexNum{}; // 0 < indexNum ? Triangle Mesh : Point Cloud
 	float shininess{ 128 };
 	SunkueMakeGetSet(Bound, bound);
-	SunkueMakeGetSet(TransformComponnent, transform);
+	SunkueMakeGetSet(Eigen::Affine3f, transform) = Eigen::Affine3f::Identity();
 protected:
 	Shader& shader;
 	DrawAble(Shader& shader) :shader{ shader } {}

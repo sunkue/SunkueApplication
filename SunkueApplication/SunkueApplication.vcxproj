@@ -59,7 +59,6 @@
     <ClInclude Include="Application\src\SunkueMath.hpp" />
     <ClInclude Include="Application\src\SunkueWindow.h" />
     <ClInclude Include="Application\src\System.h" />
-    <ClInclude Include="Application\src\Transform.hpp" />
     <ClInclude Include="Application\src\UniformBlockObject.hpp" />
   </ItemGroup>
   <ItemGroup>

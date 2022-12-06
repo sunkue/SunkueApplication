@@ -92,8 +92,8 @@ void SunkueWindow::BindEventFuncs()
 		else {
 			auto& agent = this->renderer()->selectedItem();
 			if (!agent._Ptr)return;
-			constexpr double speed = 0.005;
-			agent->second.get().transform().scale(scroll.yOffset * speed);
+			constexpr double speed = 1.005;
+			agent->second.get().transform().scale(0 < scroll.yOffset ? speed : 1. / speed);
 		}
 		});
 	MouseEventManager::Get().BindDefaultPosFunc([this](const MouseEventManager::PosEvent& pos) {
@@ -113,8 +113,8 @@ void SunkueWindow::BindEventFuncs()
 				constexpr double xSpeed = +1.;
 				constexpr double ySpeed = -1.;
 				auto& camera = this->renderer()->mainCamera();
-				agent->second.get().transform().translate(Eigen::Translation3f{ camera.right() * xDiff * xSpeed });
-				agent->second.get().transform().translate(Eigen::Translation3f{camera.up() * yDiff * ySpeed});
+				agent->second.get().transform().translate(Eigen::Translation3f{ camera.right() * xDiff * xSpeed }.translation());
+				agent->second.get().transform().translate(Eigen::Translation3f{ camera.up() * yDiff * ySpeed }.translation());
 			}
 		}
 		else if (MouseEventManager::Get().GetWheelClick() && MouseEventManager::Get().GetRightClick()) {
@@ -158,8 +158,8 @@ void SunkueWindow::BindEventFuncs()
 			else {
 				auto& agent = this->renderer()->selectedItem();
 				if (!agent._Ptr)return;
-				constexpr double ySpeed = -0.005;
-				agent->second.get().transform().scale(yDiff * ySpeed);
+				constexpr double ySpeed = 1.005;
+				agent->second.get().transform().scale(yDiff < 0 ? ySpeed : 1. / ySpeed);
 			}
 		}
 		});

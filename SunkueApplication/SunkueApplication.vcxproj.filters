@@ -173,9 +173,6 @@
     <ClInclude Include="Application\src\Camera.hpp">
       <Filter>Application\Application\Renderer\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Application\src\Transform.hpp">
-      <Filter>Application\Application\Renderer\Compponent</Filter>
-    </ClInclude>
     <ClInclude Include="Application\src\ClippedWindow.hpp">
       <Filter>Application\Application\Renderer\ClippedWindow</Filter>
     </ClInclude>

@@ -114,7 +114,7 @@ namespace In3D {
 		protected:
 			virtual void Draw()override {
 				shader.Use();
-				shader.Set("u_model_mat", transform().modelMatrix());
+				shader.Set("u_model_mat", transform().matrix());
 				shader.Set("u_radius", detail.pointSize);
 				shader.Set("u_shininess", shininess);
 				for (int i = 0; i < detail.pseudoColorNum; i++) {
