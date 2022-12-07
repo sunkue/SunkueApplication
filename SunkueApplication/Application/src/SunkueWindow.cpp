@@ -114,7 +114,6 @@ void SunkueWindow::BindEventFuncs()
 				constexpr double ySpeed = -1.;
 				auto& camera = this->renderer()->mainCamera();
 				auto rotate = agent->second.get().transform().rotation();
-				std::cout << rotate * camera.up() << "\n\n";
 				agent->second.get().transform()
 					.translate(Eigen::Translation3f{ (rotate.inverse() * camera.right()) * xDiff * xSpeed }.translation())
 					.translate(Eigen::Translation3f{ (rotate.inverse() * camera.up()) * yDiff * ySpeed }.translation());
