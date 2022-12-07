@@ -113,8 +113,11 @@ void SunkueWindow::BindEventFuncs()
 				constexpr double xSpeed = +1.;
 				constexpr double ySpeed = -1.;
 				auto& camera = this->renderer()->mainCamera();
-				agent->second.get().transform().translate(Eigen::Translation3f{ camera.right() * xDiff * xSpeed }.translation());
-				agent->second.get().transform().translate(Eigen::Translation3f{ camera.up() * yDiff * ySpeed }.translation());
+				auto rotate = agent->second.get().transform().rotation();
+				std::cout << rotate * camera.up() << "\n\n";
+				agent->second.get().transform()
+					.translate(Eigen::Translation3f{ (rotate.inverse() * camera.right()) * xDiff * xSpeed }.translation())
+					.translate(Eigen::Translation3f{ (rotate.inverse() * camera.up()) * yDiff * ySpeed }.translation());
 			}
 		}
 		else if (MouseEventManager::Get().GetWheelClick() && MouseEventManager::Get().GetRightClick()) {
@@ -128,7 +131,9 @@ void SunkueWindow::BindEventFuncs()
 				if (!agent._Ptr)return;
 				constexpr double xSpeed = 1.;
 				auto& camera = this->renderer()->mainCamera();
-				agent->second.get().transform().rotate(Eigen::Quaternionf(Eigen::AngleAxisf(radians(xDiff * xSpeed), camera.direction())));
+				auto center = agent->second.get().bound().center();
+				agent->second.get().transform()
+					.rotateAroundCenter(Eigen::Quaternionf(Eigen::AngleAxisf(radians(xDiff * xSpeed), camera.direction())), center);
 			}
 		}
 		else if (MouseEventManager::Get().GetRightClick()) {
@@ -145,8 +150,10 @@ void SunkueWindow::BindEventFuncs()
 				constexpr double xSpeed = -0.1;
 				constexpr double ySpeed = -0.1;
 				auto& camera = this->renderer()->mainCamera();
-				agent->second.get().transform().rotate(Eigen::Quaternionf(Eigen::AngleAxisf(radians(xDiff * xSpeed), camera.up())));
-				agent->second.get().transform().rotate(Eigen::Quaternionf(Eigen::AngleAxisf(radians(yDiff * ySpeed), camera.right())));
+				auto center = agent->second.get().bound().center();
+				agent->second.get().transform()
+					.rotateAroundCenter(Eigen::Quaternionf(Eigen::AngleAxisf(radians(xDiff * xSpeed), camera.up())), center)
+					.rotateAroundCenter(Eigen::Quaternionf(Eigen::AngleAxisf(radians(yDiff * ySpeed), camera.right())), center);
 			}
 		}
 		else if (MouseEventManager::Get().GetWheelClick()) {

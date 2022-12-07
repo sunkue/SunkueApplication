@@ -23,6 +23,18 @@ public:
 	}
 };
 
+class TransformComponent :public Eigen::Affine3f
+{
+public:
+	TransformComponent() :Eigen::Affine3f{ Eigen::Affine3f::Identity() }{};
+public:
+	TransformComponent& rotateAroundCenter(Eigen::Quaternionf q, Eigen::Vector3f center) {
+		auto a = Eigen::Affine3f((Eigen::Translation3f(center) * q * Eigen::Translation3f(-center)));
+		m_matrix *= a.matrix();
+		return *this;
+	}
+};
+
 class DrawAble
 {
 	friend class Renderer;
@@ -33,7 +45,7 @@ protected:
 	size_t indexNum{}; // 0 < indexNum ? Triangle Mesh : Point Cloud
 	float shininess{ 128 };
 	SunkueMakeGetSet(Bound, bound);
-	SunkueMakeGetSet(Eigen::Affine3f, transform) = Eigen::Affine3f::Identity();
+	SunkueMakeGetSet(TransformComponent, transform);
 protected:
 	Shader& shader;
 	DrawAble(Shader& shader) :shader{ shader } {}
