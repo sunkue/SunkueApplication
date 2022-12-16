@@ -55,6 +55,6 @@ vec3 caculateLight(DirectionalLight light, vec3 viewDir, vec3 normal, vec3 albed
 
 void main()
 {
-	o_color = vec4(caculateLight(u_sun, u_camera_pos - fs_in.worldPos, fs_in.normal, fs_in.color.rgb, u_shininess), o_color.a);
+	o_color = vec4(caculateLight(u_sun, u_camera_pos - fs_in.worldPos, fs_in.normal, fs_in.color.rgb, u_shininess), fs_in.color.a);
 }
 

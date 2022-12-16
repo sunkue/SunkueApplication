@@ -20,7 +20,8 @@ void SunkueWindow::Init(int w, int h) {
 	window = glfwCreateWindow(w, h, "SUNKUE", NULL, NULL);
 	if (window == nullptr)
 	{
-		std::cerr << "Failed to create GLFW window" << std::endl;
+		std::cerr << "Failed to create GLFW window" 
+			<< "[ERR :: " << std::hex << glfwGetError(nullptr) << "]" << std::endl;
 		glfwTerminate();
 		throw std::exception();
 	}
